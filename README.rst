@@ -17,8 +17,8 @@ Getting Started With OSVVM
 **This is a work in progress**
 All pdf documents have been pushed to the repository.  
 Shortly this list will be updated. 
-We are also adding documentation to [osvvm.readthedocs.io](https://osvvm.readthedocs.io/en/docs).
- * [OSVVM Utility library](https://github.com/OSVVM/OSVVM) 
+We are also adding documentation to `osvvm.readthedocs.io <https://osvvm.readthedocs.io/en/docs>`_.
+ * `OSVVM Utility library <https://github.com/OSVVM/OSVVM>`_ 
     * AlertLogPkg
        * `AlertLogPkg User Guide<https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_user_guide.pdf>`_
        * `AlertLogPkg Quick Reference<https://github.com/OSVVM/Documentation/blob/master/alertlogpkg_quickref.pdf>`_
