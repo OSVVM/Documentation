@@ -1,4 +1,6 @@
-# OSVVM Documentation
+OSVVM Documentation
+######################
+
 Open Source VHDL Verification Methodology (OSVVM) provides 
 utility and model libraries that simplify 
 your FPGA and ASIC verification tasks.
@@ -8,7 +10,8 @@ or a complex ASIC.
 
 This repository contains the OSVVM Documentation. 
 
-## OSVVM Repositories
+OSVVM Repositories
+=====================================
 
 **This is a work in progress**
 All pdf documents have been pushed to the repository.  
