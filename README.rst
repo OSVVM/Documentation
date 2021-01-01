@@ -57,12 +57,12 @@ AXI4, AXI4Lite, AxiStream Library
 UART Library
 =====================================
 
-* `OSVVM UART Verification Components (repository) <https://github.com/OSVVM/UART>`_
-
 Currently the best way to learn about the UART Transmitter and
 Receiver verification components is to run the testbenches.
 For directions on how to do this see the OSVVM Script Environment
 documentation.
+
+* `OSVVM UART Verification Components (repository) <https://github.com/OSVVM/UART>`_
 * `Script User Guide (at bottom of page) <https://github.com/OSVVM/OSVVM-Scripts>`_
 
 
