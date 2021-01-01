@@ -15,7 +15,7 @@ Getting Started With OSVVM
 To understand the basics of using OSVVM for verification, see:    
 
 *  `Creating Better Self-Checking FPGA Verification Tests with Open Source VHDL Verification Methodology (OSVVM) (webinar) <https://www.aldec.com/en/support/resources/multimedia/webinars/2094>`_
-*  `OSVVM Test Writers User Guide <https://github.com/OSVVM/Documentation/blob/master/OSVVM_test_writers_user_guide.pdf>`_
+*  `OSVVM Test Writers User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/OSVVM_test_writers_user_guide.pdf>`_
 
 To understand how to use OSVVM Verification Components, see:   
 
