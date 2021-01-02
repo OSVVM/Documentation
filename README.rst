@@ -113,6 +113,15 @@ they do support in their user guide.
 *  `Stream Model Independent Transactions User Guide (pdf) <Stream_Model_Independent_Transactions_user_guide.pdf>`_
 
 
+Training:  The Quick Path to Learning OSVVM
+==============================================
+The fastest way to get started with OSVVM is 
+`SynthWorks' Advanced VHDL Testbenches and Verification <https://synthworks.com/vhdl_testbench_verification.htm>`_
+which is available world wide either on-line or on-site (once we can travel again).  
+   
+`Here is our current class schedule. <https://synthworks.com/public_vhdl_courses.htm#VHDL_Test_Bench_Training>`_
+
+
 A Quick Note About Copyrights
 =====================================
 
