@@ -1,5 +1,0 @@
-docs/**/*.*
-!docs/**/*.rst
-!docs/conf.py
-!docs/requirements.txt
-!docs/make.bat
