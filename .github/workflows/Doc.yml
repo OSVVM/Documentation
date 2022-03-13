@@ -1,0 +1,66 @@
+# Authors:
+#   Unai Martinez-Corral
+#
+# Copyright 2020-2022 Unai Martinez-Corral <unai.martinezcorral@ehu.eus>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Doc
+
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 0 * * 4'
+  workflow_dispatch:
+
+env:
+  DOCKER_BUILDKIT: 1
+
+jobs:
+
+  BuildTheDocs:
+    runs-on: ubuntu-latest
+    name: '📓 Docs'
+    steps:
+
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2
+
+    - name: '📓 BuildTheDocs (BTD)'
+      uses: buildthedocs/btd@v0
+      with:
+        token: ${{ github.token }}
+        skip-deploy: true
+
+    - name: '📤 Upload artifact: Sphinx HTML'
+      uses: actions/upload-artifact@v2
+      with:
+        name: Documentation-HTML
+        path: doc/_build/html
+
+    - name: '📓 Publish site to GitHub Pages'
+      if: github.event_name != 'pull_request'
+      run: |
+        sudo chown -R "$USER:$USER" docs/_build/html
+        cd docs/_build/html
+        touch .nojekyll
+        git init
+        cp ../../../.git/config ./.git/config
+        git add .
+        git config --local user.email "BuildTheDocs@GitHubActions"
+        git config --local user.name "GitHub Actions"
+        git commit -a -m "update ${{ github.sha }}"
+        git push -u origin +HEAD:gh-pages
