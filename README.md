@@ -10,4 +10,8 @@
 
 # OSVVM Documentation
 
+<p align="center">
+  <a href="https://osvvm.github.io/documentation"><img src="./docs/_static/logo.png"/></a>
+</p>
+
 See [OSVVM.github.io/Documentation](https://osvvm.github.io/documentation).
