@@ -1,15 +1,5 @@
-.. raw:: html
-
-  <p align="center">
-    <a title="osvvm.org/" href="https://osvvm.org/"><img src="https://img.shields.io/website?longCache=true&style=flat-square&label=osvvm.org&logo=GitHub&logoColor=fff&up_color=blueviolet&up_message=Visit%20now%20%E2%9E%9A&url=https%3A%2F%2Fosvvm.org"></a><!--
-    -->
-    <a title="osvvm.github.io/documentation" href="https://osvvm.github.io/documentation"><img src="https://img.shields.io/website?longCache=true&style=flat-square&label=osvvm.github.io%2Fdocumentation&logo=GitHub&logoColor=fff&up_color=blueviolet&up_message=Read%20now%20%E2%9E%9A&url=https%3A%2F%2Fosvvm.github.io%2Fdocumentation%2Findex.html"></a><!--
-    -->
-    <a title="GitHub Actions workflow 'Doc'" href="https://github.com/osvvm/documentation/actions?query=workflow%3ADoc"><img src="https://img.shields.io/github/workflow/status/osvvm/documentation/Doc/master?longCache=true&style=flat-square&label=Doc&logo=GitHub%20Actions&logoColor=fff"></a>
-  </p>
-
-OSVVM Documentation
-###################
+About OSVVM
+###########
 
 Open Source VHDL Verification Methodology (OSVVM) provides
 utility and verification component libraries that simplify
@@ -20,7 +10,7 @@ process from simple RTL blocks, to Cores, and to an entire Chip.
 
 
 Getting Started With OSVVM
-=====================================
+==========================
 
 To understand the basics of using OSVVM for verification, see:
 
@@ -35,7 +25,7 @@ To understand how to use OSVVM Verification Components, see:
 
 
 OSVVM Script Environment
-=====================================
+========================
 
 The OSVVM Script Library creates a scripting
 environment that is independent of the simulator
@@ -56,7 +46,7 @@ what so we can plan how to adapt for the bash version.
 
 
 AXI4, AXI4Lite, AxiStream Library
-=====================================
+=================================
 
 * `OSVVM AXI4 Lite, Full, and Stream Verification Components (repository) <https://github.com/OSVVM/AXI4>`_
 *  `Axi4 Verification Components User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/Axi4_VC_user_guide.pdf>`_
@@ -65,7 +55,7 @@ AXI4, AXI4Lite, AxiStream Library
 
 
 UART Library
-=====================================
+============
 
 Currently the best way to learn about the UART Transmitter and
 Receiver verification components is to run the testbenches.
@@ -77,7 +67,7 @@ documentation.
 
 
 OSVVM Utility Library
-=====================================
+=====================
 
 * `OSVVM Utility library (repository) <https://github.com/OSVVM/OSVVM>`_
    * AlertLogPkg
@@ -108,7 +98,7 @@ OSVVM Utility Library
 
 
 Model Independent Transactions
-=====================================
+==============================
 
 All OSVVM Streaming and Address Bus Interfaces use the
 Model Independent Transaction packages from this repository.
@@ -124,7 +114,7 @@ they do support in their user guide.
 
 
 Training:  The Quick Path to Learning OSVVM
-==============================================
+===========================================
 The fastest way to get started with OSVVM is
 `SynthWorks' Advanced VHDL Testbenches and Verification <https://synthworks.com/vhdl_testbench_verification.htm>`_
 which is available world wide either on-line or on-site (once we can travel again).
@@ -133,25 +123,16 @@ which is available world wide either on-line or on-site (once we can travel agai
 
 
 A Quick Note About Copyrights
-=====================================
+=============================
 
-The documentation is copyrighted for reference
-type usage in any setting.
+The documentation is copyrighted for reference type usage in any setting.
 Feel free to print and distribute (email) these materials.
-However, derivatives of this material are
-forbidden without written permission.
-A derivative would be translating the
-documentation to slides, other documents, or webpages.
+However, derivatives of this material are forbidden without written permission.
+A derivative would be translating the documentation to slides, other documents, or webpages.
 
-Why? - SynthWorks, the primary developer of OSVVM
-and OSVVM documentation, provides training.
-We cannot allow other training providers to use
-our documentation to write their training materials,
-websites, or documents - this is commercial usage
-and is not in any way fair use.
+Why? - SynthWorks, the primary developer of OSVVM and OSVVM documentation, provides training.
+We cannot allow other training providers to use our documentation to write their training materials, websites, or
+documents - this is commercial usage and is not in any way fair use.
 
-This only means that if you want to write a
-class on OSVVM, you must develop your own examples.
-Alternately you could talk to SynthWorks about
-licensing their materials.
-
+This only means that if you want to write a class on OSVVM, you must develop your own examples.
+Alternately you could talk to SynthWorks about licensing their materials.
