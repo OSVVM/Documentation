@@ -20,7 +20,7 @@ In OSVVM, we implement transaction-level models (what SystemVerilog calls a veri
 
 Further information about OSVVM’s Transaction-Level modeling capability:
 
-    For more, see ResolutionPkg_user_guide.pdf.
+    For more, see :ghsrc:`ResolutionPkg_user_guide.pdf`.
 
 Error logging and reporting – Alerts and Affirmations
 -----------------------------------------------------
@@ -30,7 +30,7 @@ OSVVM’s AlertLogPkg simplifies and formalizes the signaling errors (at run tim
 Further information about OSVVM’s Alerts:
 
     Using Alerts
-    For more, see `AlertLogPkg_User_Guide.pdf <https://github.com/OSVVM/OSVVM/blob/master/doc/AlertLogPkg_user_guide.pdf>`_.
+    For more, see :ghsrc:`AlertLogPkg_User_Guide.pdf`.
 
 Message filtering – Logs
 ------------------------
@@ -40,7 +40,7 @@ Logs provide a mechanism to conditionally print information. Verbosity control a
 Further information about OSVVM’s Logs:
 
     Using Logs
-    For more, see AlertLogPkg_User_Guide.pdf.
+    For more, see :ghsrc:`AlertLogPkg_User_Guide.pdf`.
 
 Transcript files
 ----------------
@@ -50,8 +50,8 @@ OSVVM’s transcript capability simplifies having different parts of a testbench
 Further information about OSVVM’s Transcript Files:
 
     Testbench Transcripting using OSVVM.
-    For more, see TranscriptPkg_user_guide.pdf.
-    
+    For more, see :ghsrc:`TranscriptPkg_user_guide.pdf`.
+
 Constrained Random test generation
 ----------------------------------
 
@@ -68,7 +68,7 @@ Further information about OSVVM’s randomization capability:
 * Weighted Randomization
 * Normal, Poisson, FavorBig, FavorSmall distributions
 * Creating constrained random tests
-* For more, see RandomPkg_user_guide.pdf.
+* For more, see :ghsrc:`RandomPkg_user_guide.pdf`.
 
 Functional Coverage
 -------------------
@@ -82,7 +82,7 @@ Further information about OSVVM’s Functional Coverage:
     The Basics of OSVVM’s Point and Cross Functional Coverage: AKA, Functional Coverage Made Easy with VHDL’s OSVVM
     Why you need functional coverage
     VHDL Functional Coverage is more capable than SystemVerilog
-    For more, see CoveragePkg_User_Guide.pdf
+    For more, see :ghsrc:`CoveragePkg_User_Guide.pdf`.
 
 Intelligent Coverage™ Randomization Methodology
 -----------------------------------------------
@@ -103,7 +103,7 @@ Further information about OSVVM’s Intelligent Coverage Randomization:
 
     Intelligent Coverage Basics. AKA: Intelligent Coverage is 5X or More Faster than Constrained Random: .
     Weighted Intelligent Coverage. AKA: Functional Coverage Goals and Randomization Weights
-    For more, see CoveragePkg_User_Guide.pdf
+    For more, see :ghsrc:`CoveragePkg_User_Guide.pdf`.
 
 Utilities for testbench process synchronization
 -----------------------------------------------
@@ -112,7 +112,7 @@ The OSVVM package, TbUtilPkg, provides testbench utilities for synchronizing pro
 
 Further information about OSVVM’s Scoreboard and FIFO capability:
 
-    For more, see TbUtilPkg_user_guide.pdf.
+    For more, see :ghsrc:`TbUtilPkg_user_guide.pdf`.
 
 TbUtilPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.
 
@@ -123,7 +123,7 @@ Scoreboards and FIFOs simplify test data checking when information flows from on
 
 Further information about OSVVM’s Scoreboard and FIFO capability:
 
-    For more, see ScoreboardPkg_user_guide.pdf.
+    For more, see :ghsrc:`ScoreboardPkg_user_guide.pdf`.
 
 ScoreboardPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.
 
@@ -134,6 +134,6 @@ MemoryPkg simplifies the process of creating efficient data structures for memor
 
 Further information about OSVVM’s Scoreboard and FIFO capability:
 
-    For more, see MemoryPkg_user_guide.pdf.
+    For more, see :ghsrc:`MemoryPkg_user_guide.pdf`.
 
-MemoryPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future. 
+MemoryPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.

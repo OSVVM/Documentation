@@ -23,9 +23,13 @@ Download the OSVVM Utility library using git:
 
 
 .. toctree::
-   :maxdepth: 2
    :hidden:
+
+   about
+
+.. toctree::
    :caption: Main Documentation
+   :hidden:
 
    overview
    AlertLogPkg_user_guide
