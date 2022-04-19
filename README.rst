@@ -1,13 +1,34 @@
 OSVVM Documentation
 ######################
 
-Open Source VHDL Verification Methodology (OSVVM) provides 
-utility and verification component libraries that simplify 
-your FPGA and ASIC verification tasks.
+OSVVM is an advanced verification methodology that
+defines a VHDL verification framework, verification utility library, 
+verification component library, and a scripting flow
+that simplifies your FPGA or ASIC verification project 
+from start to finish.
 Using these libraries you can create a simple, readable, and 
-powerful testbench that is suitable for the entire verification
-process from simple RTL blocks, to Cores, and to an entire Chip.
+powerful testbench that is suitable for either a simple FPGA block
+or a complex ASIC.
 
+OSVVM is developed by the same VHDL experts who
+have helped develop VHDL standards.
+We have used our expert VHDL skills to create
+advanced verification capabilities that:
+
+* Are simple to use and work like built-in language features.
+* Maximize reuse and reduce project schedule.
+* Facilitate readabilty and reviewability by the whole team including software and system engineers.
+* Facilitate debug with HTML based test suite and test case reporting.
+* Provide continuous integration (CI/CD) support with JUnit XML test suite reporting.
+* Provide buzz word features including Constrained Random, Functional Coverage, Scoreboards, FIFOs, Memory Models, error logging and reporting, and message filtering.
+* Rival the verification capabilities of SystemVerilog + UVM.
+
+
+Run The Demos
+=====================================
+
+A great way to get oriented with OSVVM is to run the demos.
+For directions on running the demos, see `OSVVM Scripts <https://github.com/osvvm/OSVVM-Scripts#readme>`_.
 
 Getting Started With OSVVM
 =====================================
