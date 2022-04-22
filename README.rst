@@ -54,12 +54,6 @@ that is running.
 Hence, one script can run the simulation on any simulator.   
 Currently the scripting environment is TCL based.  
 It uses procedures to do common simulation tasks.  
-While any tcl can be used within OSVVM scripts, 
-it would be best to try to limit this as our long
-term plan is to also create a bash version of the 
-script environment.  
-If you need to use TCL commands, please let us know
-what so we can plan how to adapt for the bash version.
 
 * `OSVVM Script library (repository) <https://github.com/OSVVM/OSVVM-Scripts>`_
 * `Script User Guide (at bottom of page) <https://github.com/OSVVM/OSVVM-Scripts>`_
