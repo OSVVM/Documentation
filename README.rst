@@ -99,7 +99,7 @@ Documents related to OSVVM Scripting
       - `Script_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Script_user_guide.pdf>`_
     * - Script User Guide (HTML)  
       - `README.rst <https://github.com/OSVVM/OSVVM-Scripts#readme>`_
-    * - Script Repository  
+    * - OSVVM Scripts Repository  
       - `Repository <https://github.com/OSVVM/OSVVM-Scripts>`_
 
 
@@ -197,7 +197,7 @@ Documents related to OSVVM Model Independent Transactions
     * - Stream Model Independent Transactions User Guide 
       - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`_
     * - OSVVM Verification Component Common library (repository) 
-      - `OsvvmCommon <https://github.com/OSVVM/OSVVM-Common>`_
+      - `OSVVM Common <https://github.com/OSVVM/OSVVM-Common>`_
 
 
 
@@ -231,7 +231,7 @@ is tabulated below.
       - `DpRam  <https://github.com/OSVVM/DpRam>`_
 
 Note all of the OSVVM verification components use the model independent 
-transaction interfaces which are defined in `OSVVM-Common <https://github.com/OSVVM/OSVVM-Common>`_. 
+transaction interfaces which are defined in `OSVVM Common <https://github.com/OSVVM/OSVVM-Common>`_. 
 It is required to be in the directory `OsvvmLibraries/Common `.
 
 
