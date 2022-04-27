@@ -127,31 +127,31 @@ OSVVM's VHDL Utility Library.
       - User Guide
       - Quick Reference      
     * - AlertLogPkg
-      - `AlertLogPkg User Guide  (pdf) <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_user_guide.pdf>`_
-      - `AlertLogPkg Quick Reference  (pdf) <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_quickref.pdf>`_
+      - `AlertLogPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_user_guide.pdf>`_
+      - `AlertLogPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_quickref.pdf>`_
     * - CoveragePkg
-      - `CoveragePkg User Guide  (pdf) <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_user_guide.pdf>`_
-      - `CoveragePkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_quickref.pdf>`_
+      - `CoveragePkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_user_guide.pdf>`_
+      - `CoveragePkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_quickref.pdf>`_
     * - RandomPkg
-      - `RandomPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_user_guide.pdf>`_
-      - `RandomPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_quickref.pdf>`_
+      - `RandomPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_user_guide.pdf>`_
+      - `RandomPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_quickref.pdf>`_
     * - ScoreboardPkg
-      - `ScoreboardPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_user_guide.pdf>`_
-      - `ScoreboardPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_quickref.pdf>`_
+      - `ScoreboardPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_user_guide.pdf>`_
+      - `ScoreboardPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_quickref.pdf>`_
     * - MemoryPkg
-      - `MemoryPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/MemoryPkg_user_guide.pdf>`_
+      - `MemoryPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/MemoryPkg_user_guide.pdf>`_
       - None
     * - TbUtilPkg
-      - `TbUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
-      - `TbUtilPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
+      - `TbUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
+      - `TbUtilPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
     * - TbUtilPkg
-      - `TbUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
-      - `TbUtilPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
+      - `TbUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
+      - `TbUtilPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
     * - TranscriptPkg
-      - `TranscriptPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_user_guide.pdf>`_
-      - `TranscriptPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_quickref.pdf>`_
+      - `TranscriptPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_user_guide.pdf>`_
+      - `TranscriptPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_quickref.pdf>`_
     * - TextUtilPkg
-      - `TextUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TextUtilPkg_user_guide.pdf>`_
+      - `TextUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/TextUtilPkg_user_guide.pdf>`_
       - None
       
 * `OSVVM Utility library (repository) <https://github.com/OSVVM/OSVVM>`_ 
