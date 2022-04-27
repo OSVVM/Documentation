@@ -30,21 +30,38 @@ Run The Demos
 A great way to get oriented with OSVVM is to run the demos.
 For directions on running the demos, see `OSVVM Scripts <https://github.com/osvvm/OSVVM-Scripts#readme>`_.
 
-Getting Started with OSVVM Framework
+OSVVM Framework
 =====================================
+Some methodologies (or frameworks) are so complex that you need a script to create initial starting point for writing verification components, test cases, and/or the test harness. SystemVerilog + UVM is certainly like this. There are even several organizations that propose that you use their “Lite” or “Easy” approach.
 
-For a general overview of OSVVM see
+OSVVM is simple enough to use on small blocks and powerful enough to use on large, complex chips or systems. This allows us to use the same style of framework for RTL, Core, and Chip level verification - which in turn facilitates re-use of verification components and test cases. OSVVM has added the abstractions needed to make our verification component based approach as easy as the “Lite” approach of other methodologies.
 
-To understand the basics of using OSVVM for verification, see:    
+SynthWorks has been using this framework for 25+ years in our training classes and consulting work. During that time, we have innovated new capabilities and evolved our existing ones to increase re-use and reduce effort spent.
 
-*  `Creating Better Self-Checking FPGA Verification Tests with Open Source VHDL Verification Methodology (OSVVM) (webinar) <https://www.aldec.com/en/support/resources/multimedia/webinars/2094>`_
-*  `OSVVM Test Writers User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/OSVVM_test_writers_user_guide.pdf>`_
+When we examine OSVVM’s framework in detail, we see that it has many similar elements to SystemVerilog + UVM. However, one thing not present is OO language constructs. Instead OSVVM uses ordinary VHDL constructs, such as structural and behavioral code. This makes it readily accessible to both verfication and RTL engineers.
 
-To understand how to use OSVVM Verification Components, see:   
+.. list-table:: 
+    :widths: 40 10  
+    :header-rows: 1
+    
+    * - Document
+      - User Guide
+    * - OSVVM Overview (HTML)
+      - `osvvm.github.io <https://osvvm.github.io>`_
+    * - OSVVM Overview (PDF)
+      - `OSVVM_Overiew.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_Overiew.pdf>`_
+    * - OSVVM's Structured Testbench Framework
+      - `OSVVM_structured_testbench_framework.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_structured_testbench_framework.pdf>`_
+    * - OSVVM's Verification Component Developer's Guide
+      - `OSVVM_verification_component_developers_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_verification_component_developers_guide.pdf>`
+    * - OSVVM's Test Writers User Guide
+      - `OSVVM_test_writers_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_test_writers_user_guide.pdf>`
+    * - OSVVM's Address Bus Model Independent Transactions Users Guide
+      - `Address_Bus_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Address_Bus_Model_Independent_Transactions_user_guide.pdf>`
+    * - OSVVM's Stream Model Independent Transactions Users Guide
+      - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`
 
-*  `Axi4 Verification Components User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/Axi4_VC_user_guide.pdf>`_
-*  `AxiStream Verification Components User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/AxiStream_user_guide.pdf>`_
-*  Based on an older revision:  `Creating an AXI4 Lite, Transaction Based VHDL Testbench with OSVVM (webinar) <https://www.aldec.com/en/support/resources/multimedia/webinars/2083>`_
+
 
 
 OSVVM Script Environment
@@ -154,32 +171,6 @@ OSVVM's VHDL Utility Library.
       - `TextUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/master/TextUtilPkg_user_guide.pdf>`_
       - None
       
-* `OSVVM Utility library (repository) <https://github.com/OSVVM/OSVVM>`_ 
-   * AlertLogPkg
-      * `AlertLogPkg User Guide  (pdf) <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_user_guide.pdf>`_
-      * `AlertLogPkg Quick Reference  (pdf) <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_quickref.pdf>`_
-   * CoveragePkg
-      * `CoveragePkg User Guide  (pdf) <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_user_guide.pdf>`_
-      * `CoveragePkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_quickref.pdf>`_
-   * RandomPkg
-      * `RandomPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_user_guide.pdf>`_
-      * `RandomPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_quickref.pdf>`_
-   * ScoreboardPkg
-      * `ScoreboardPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_user_guide.pdf>`_
-      * `ScoreboardPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_quickref.pdf>`_
-   * MemoryPkg
-      * `MemoryPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/MemoryPkg_user_guide.pdf>`_
-   * TbUtilPkg
-      * `TbUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
-      * `TbUtilPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
-   * TbUtilPkg
-      * `TbUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
-      * `TbUtilPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
-   * TranscriptPkg
-      * `TranscriptPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_user_guide.pdf>`_
-      * `TranscriptPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_quickref.pdf>`_
-   * TextUtilPkg
-      * `TextUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TextUtilPkg_user_guide.pdf>`_
 
 
 Model Independent Transactions
