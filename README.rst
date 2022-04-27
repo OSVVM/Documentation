@@ -53,13 +53,13 @@ When we examine OSVVM’s framework in detail, we see that it has many similar e
     * - OSVVM's Structured Testbench Framework
       - `OSVVM_structured_testbench_framework.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_structured_testbench_framework.pdf>`_
     * - OSVVM's Verification Component Developer's Guide
-      - `OSVVM_verification_component_developers_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_verification_component_developers_guide.pdf>`
+      - `OSVVM_verification_component_developers_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_verification_component_developers_guide.pdf>`_
     * - OSVVM's Test Writers User Guide
-      - `OSVVM_test_writers_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_test_writers_user_guide.pdf>`
+      - `OSVVM_test_writers_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_test_writers_user_guide.pdf>`_
     * - OSVVM's Address Bus Model Independent Transactions Users Guide
-      - `Address_Bus_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Address_Bus_Model_Independent_Transactions_user_guide.pdf>`
+      - `Address_Bus_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Address_Bus_Model_Independent_Transactions_user_guide.pdf>`_
     * - OSVVM's Stream Model Independent Transactions Users Guide
-      - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`
+      - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`_
 
 
 
