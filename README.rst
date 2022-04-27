@@ -154,7 +154,7 @@ Documents related to OSVVM Verification Utility Library
     * - RandomPkg
       - `RandomPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/RandomPkg_user_guide.pdf>`_
       - `RandomPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/main/RandomPkg_quickref.pdf>`_
-    * - ScoreboardPkg
+    * - ScoreboardGenericPkg
       - `ScoreboardPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/ScoreboardPkg_user_guide.pdf>`_
       - `ScoreboardPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/main/ScoreboardPkg_quickref.pdf>`_
     * - MemoryPkg
@@ -163,12 +163,12 @@ Documents related to OSVVM Verification Utility Library
     * - TbUtilPkg
       - `TbUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/TbUtilPkg_user_guide.pdf>`_
       - `TbUtilPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/main/TbUtilPkg_quickref.pdf>`_
-    * - TbUtilPkg
-      - `TbUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/TbUtilPkg_user_guide.pdf>`_
-      - `TbUtilPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/main/TbUtilPkg_quickref.pdf>`_
     * - TranscriptPkg
       - `TranscriptPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/TranscriptPkg_user_guide.pdf>`_
       - `TranscriptPkg_quickref.pdf <https://github.com/OSVVM/Documentation/blob/main/TranscriptPkg_quickref.pdf>`_
+    * - ResolutionPkg
+      - `ResolutionPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/ResolutionPkg_user_guide.pdf>`_
+      - None
     * - TextUtilPkg
       - `TextUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/TextUtilPkg_user_guide.pdf>`_
       - None
@@ -177,8 +177,8 @@ Model Independent Transactions
 =====================================
 All OSVVM verification components use the OSVVM 
 Model Independent Transaction for Streaming and Address Bus Interfaces.
-These packages establish the pattern for transactions that
-each verification component should consider supporting.
+These packages are our internal standard for the 
+transaction interface and transaction API. 
 Not all verification components will support all 
 transactions - however, they should list which ones
 they do support in their user guide.
