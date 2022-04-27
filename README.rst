@@ -95,7 +95,7 @@ Going Further
     * - Document Name
       - Link
     * - Script User Guide (pdf)
-      - `Script_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Script_user_guide.pdf>`
+      - `Script_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Script_user_guide.pdf>`_
     * - Script User Guide (HTML)  
       - `README.rst <https://github.com/OSVVM/OSVVM-Scripts#readme>`_
     * - Script Repository  
