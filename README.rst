@@ -40,12 +40,14 @@ SynthWorks has been using this framework for 25+ years in our training classes a
 
 When we examine OSVVM’s framework in detail, we see that it has many similar elements to SystemVerilog + UVM. However, one thing not present is OO language constructs. Instead OSVVM uses ordinary VHDL constructs, such as structural and behavioral code. This makes it readily accessible to both verfication and RTL engineers.
 
+Complete documentation on OSVVM's Framework is here
+
 .. list-table:: 
     :widths: 40 10  
     :header-rows: 1
     
-    * - Document
-      - User Guide
+    * - Document Name
+      - Link
     * - OSVVM Overview (HTML)
       - `osvvm.github.io <https://osvvm.github.io>`_
     * - OSVVM Overview (PDF)
@@ -62,21 +64,42 @@ When we examine OSVVM’s framework in detail, we see that it has many similar e
       - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`_
 
 
-
-
 OSVVM Script Environment
 =====================================
+The goal of OSVVM's scripting is to have 
+"One Script to Run them All" - where all is any simulator.
 
-The OSVVM Script Library creates a scripting
-environment that is independent of the simulator
-that is running.   
-Hence, a script that run the simulation on any simulator.   
-Currently the scripting environment is TCL based.  
-It uses procedures to do common simulation tasks.  
+Current supported simulators are
 
-* `OSVVM Script library (repository) <https://github.com/OSVVM/OSVVM-Scripts>`_
-* `Script User Guide (at bottom of page) <https://github.com/OSVVM/OSVVM-Scripts>`_
-* `Script User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/Script_user_guide.pdf>`_
+* GHDL (Free Open Source simulator),
+* Aldec's Active-HDL and Riviera-PRO, 
+* Siemen's ModelSim and QuestaSim, 
+* Synopsys' VCS, and
+* Cadence's Xcelium.
+
+OSVVM scripts are a TCL based API layer that provides a 
+tool independent means to simulate (and perhaps in the 
+future synthesize) your design. 
+The API uses TCL procedures to create the abstraction 
+layers – which is why they have the extension .pro. 
+
+The scripts are executable TCL, so the full power of TCL 
+can be used when needed (such as is in osvvm.pro).
+
+Going Further
+----------------------------------------------------
+
+.. list-table:: 
+    :widths: 40 10  
+
+    * - Document Name
+      - Link
+    * - Script User Guide (pdf)
+      - `Script_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Script_user_guide.pdf>`
+    * - Script User Guide (HTML)  
+      - `README.rst <https://github.com/OSVVM/OSVVM-Scripts#readme>`_
+    * - Script Repository  
+      - `Repository <https://github.com/OSVVM/OSVVM-Scripts>`_
 
 
 AXI4, AXI4Lite, AxiStream Library
