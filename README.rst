@@ -218,10 +218,10 @@ is tabulated below.
       - `Axi4_VC_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Axi4_VC_user_guide.pdf>`_
       - `AXI4  <https://github.com/OSVVM/AXI4>`_
     * - Axi4 Lite (Manager, Memory, and Subordinate) VCs
-      - `Axi4_VC_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Axi4_VC_user_guide.pdf>`
+      - `Axi4_VC_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Axi4_VC_user_guide.pdf>`_
       - `AXI4  <https://github.com/OSVVM/AXI4>`_
     * - AxiStream Transmitter and Receiver VCs
-      - `AxiStream_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/AxiStream_user_guide.pdf>`
+      - `AxiStream_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/AxiStream_user_guide.pdf>`_
       - `AXI4  <https://github.com/OSVVM/AXI4>`_
     * - UART Transmitter and Receiver VCs
       - None
