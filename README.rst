@@ -120,7 +120,7 @@ Read the following documents for more information on
 OSVVM's VHDL Utility Library.
 
 .. list-table:: 
-    :widths: 40 10 10 
+    :widths: 20 30 30  
     :header-rows: 1
     
     * - Document
