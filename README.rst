@@ -200,12 +200,10 @@ Documents related to OSVVM Model Independent Transactions
       - `OSVVM Common <https://github.com/OSVVM/OSVVM-Common>`_
 
 
-
 OSVVM Verification Component Library
 ===========================================
 OSVVM's growing verification component library 
 is tabulated below.  
-
 
 .. list-table:: 
     :widths: 40 10 10
