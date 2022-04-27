@@ -126,31 +126,31 @@ OSVVM's VHDL Utility Library.
     * - Document
       - User Guide
       - Quick Reference      
-   *  - AlertLogPkg
+    * - AlertLogPkg
       - `AlertLogPkg User Guide  (pdf) <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_user_guide.pdf>`_
       - `AlertLogPkg Quick Reference  (pdf) <https://github.com/OSVVM/Documentation/blob/master/AlertLogPkg_quickref.pdf>`_
-   *  - CoveragePkg
+    * - CoveragePkg
       - `CoveragePkg User Guide  (pdf) <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_user_guide.pdf>`_
       - `CoveragePkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/CoveragePkg_quickref.pdf>`_
-   *  - RandomPkg
+    * - RandomPkg
       - `RandomPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_user_guide.pdf>`_
       - `RandomPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/RandomPkg_quickref.pdf>`_
-   *  - ScoreboardPkg
+    * - ScoreboardPkg
       - `ScoreboardPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_user_guide.pdf>`_
       - `ScoreboardPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/ScoreboardPkg_quickref.pdf>`_
-   *  - MemoryPkg
+    * - MemoryPkg
       - `MemoryPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/MemoryPkg_user_guide.pdf>`_
       - None
-   *  - TbUtilPkg
+    * - TbUtilPkg
       - `TbUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
       - `TbUtilPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
-   *  - TbUtilPkg
+    * - TbUtilPkg
       - `TbUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_user_guide.pdf>`_
       - `TbUtilPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TbUtilPkg_quickref.pdf>`_
-   *  - TranscriptPkg
+    * - TranscriptPkg
       - `TranscriptPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_user_guide.pdf>`_
       - `TranscriptPkg Quick Reference (pdf) <https://github.com/OSVVM/Documentation/blob/master/TranscriptPkg_quickref.pdf>`_
-   *  - TextUtilPkg
+    * - TextUtilPkg
       - `TextUtilPkg User Guide (pdf) <https://github.com/OSVVM/Documentation/blob/master/TextUtilPkg_user_guide.pdf>`_
       - None
       
