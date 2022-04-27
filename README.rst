@@ -208,7 +208,7 @@ is tabulated below.
 
 
 .. list-table:: 
-    :widths: 40 10 10 10
+    :widths: 40 10 10
     :header-rows: 1
     
     * - Verification Component(s)
