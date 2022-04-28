@@ -52,7 +52,7 @@ Documents related to OSVVM Framework
     * - OSVVM Overview (HTML)
       - `osvvm.github.io <https://osvvm.github.io>`_
     * - OSVVM Overview (PDF)
-      - `OSVVM_Overiew.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_Overiew.pdf>`_
+      - `OSVVM_Overview.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_Overview.pdf>`_
     * - OSVVM's Structured Testbench Framework
       - `OSVVM_structured_testbench_framework.pdf <https://github.com/OSVVM/Documentation/blob/main/OSVVM_structured_testbench_framework.pdf>`_
     * - OSVVM's Verification Component Developer's Guide
