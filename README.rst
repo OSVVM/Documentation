@@ -230,7 +230,7 @@ is tabulated below.
 
 Note all of the OSVVM verification components use the model independent 
 transaction interfaces which are defined in `OSVVM Common <https://github.com/OSVVM/OSVVM-Common>`_. 
-It is required to be in the directory `OsvvmLibraries/Common `.
+It is required to be in the directory `OsvvmLibraries/Common`.
 
 
 Training:  The Quick Path to Learning OSVVM
