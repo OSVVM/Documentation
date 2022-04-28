@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSVVM Utility Library Overview &mdash; OSVVM-Documentation 2022.02 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AlertLogPkg User Guide" href="AlertLogPkg_user_guide.html" />
+    <link rel="prev" title="About OSVVM" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2022.02
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About OSVVM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OSVVM Utility Library Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simplify-your-testbench-development">Simplify your testbench development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#osvvm-features-and-capabilities">OSVVM Features and Capabilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transaction-level-modeling">Transaction-Level Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-logging-and-reporting-alerts-and-affirmations">Error logging and reporting – Alerts and Affirmations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-filtering-logs">Message filtering – Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transcript-files">Transcript files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constrained-random-test-generation">Constrained Random test generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functional-coverage">Functional Coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intelligent-coverage-randomization-methodology">Intelligent Coverage™ Randomization Methodology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities-for-testbench-process-synchronization">Utilities for testbench process synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scoreboards-and-fifos-data-structures-for-verification">Scoreboards and FIFOs (data structures for verification)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-models">Memory models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AlertLogPkg_user_guide.html">AlertLogPkg User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OSVVM-Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+        
+          
+            <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>OSVVM Utility Library Overview</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/OSVVM/Documentation/blob/main/docs/overview.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="osvvm-utility-library-overview">
+<h1>OSVVM Utility Library Overview<a class="headerlink" href="#osvvm-utility-library-overview" title="Permalink to this headline">¶</a></h1>
+<section id="simplify-your-testbench-development">
+<h2>Simplify your testbench development<a class="headerlink" href="#simplify-your-testbench-development" title="Permalink to this headline">¶</a></h2>
+<p>OSVVM can be used in your current VHDL testbench, in part or in whole as needed. It allows mixing of our signature “Intelligent Coverage” methodology with other verification methodologies, such as directed, algorithmic, file based, and constrained random. Don’t throw out your existing VHDL testbench or testbench models, re-use them.</p>
+<p>There is no new language to learn. There are no specialized “OO” approaches – just plain old VHDL entities and architectures. As a result, it is accessible to RTL designers. In fact, it is our goal to make our testbenches readable to verification (testbench), design (RTL), system, and software engineers.</p>
+</section>
+<section id="osvvm-features-and-capabilities">
+<h2>OSVVM Features and Capabilities<a class="headerlink" href="#osvvm-features-and-capabilities" title="Permalink to this headline">¶</a></h2>
+<p>For me talking about OSVVM is like an Arlo Guthrie song – it is very easy to go on and on. Below is an overview of the various OSVVM packages. Details are filled in with links to blog posts. Additional details will be written in the future. To keep up, follow the RSS of the blog, follow SynthWorks on Twitter, or check back.</p>
+<section id="transaction-level-modeling">
+<h3>Transaction-Level Modeling<a class="headerlink" href="#transaction-level-modeling" title="Permalink to this headline">¶</a></h3>
+<p>In OSVVM, we implement transaction-level models (what SystemVerilog calls a verification component), as an entity and architecture. To connect the transaction-level model to the testbench, we use records. To allow a single record to implement the transaction interface, we use the resoluton functions in OSVVM’s ResolutionPkg. ResolutionPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.</p>
+<p>Further information about OSVVM’s Transaction-Level modeling capability:</p>
+<blockquote>
+<div><p>For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/ResolutionPkg_user_guide.pdf">ResolutionPkg_user_guide.pdf</a>.</p>
+</div></blockquote>
+</section>
+<section id="error-logging-and-reporting-alerts-and-affirmations">
+<h3>Error logging and reporting – Alerts and Affirmations<a class="headerlink" href="#error-logging-and-reporting-alerts-and-affirmations" title="Permalink to this headline">¶</a></h3>
+<p>OSVVM’s AlertLogPkg simplifies and formalizes the signaling errors (at run time), counting errors, and reporting errors (summary at test completion). Indication of an error is done via a call to one of the Alert procedures (Alert, AlertIf, AlertIfNot, AlertIfEqual, AlertIfNotEqual, or AlertIfDiff). Alerts have the levels FAILURE, ERROR, or Warning. Each level is counted and tracked in an internal data structure. Within the data structure, each of these can be enabled or disabled. A test can be stopped if an alert value has been signaled too many times. Stop values for each counter can be set. At the end of a test, the procedure ReportAlerts prints a report that provides pass/fail and a count of the different alert values.</p>
+<p>Further information about OSVVM’s Alerts:</p>
+<blockquote>
+<div><p>Using Alerts
+For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/AlertLogPkg_User_Guide.pdf">AlertLogPkg_User_Guide.pdf</a>.</p>
+</div></blockquote>
+</section>
+<section id="message-filtering-logs">
+<h3>Message filtering – Logs<a class="headerlink" href="#message-filtering-logs" title="Permalink to this headline">¶</a></h3>
+<p>Logs provide a mechanism to conditionally print information. Verbosity control allows messages that are too detailed for normal testing to be printed when specifically enabled. Logs have the levels ALWAYS, DEBUG, FINAL, and INFO. Through simulator settings, assert has this capability to a limited degree.</p>
+<p>Further information about OSVVM’s Logs:</p>
+<blockquote>
+<div><p>Using Logs
+For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/AlertLogPkg_User_Guide.pdf">AlertLogPkg_User_Guide.pdf</a>.</p>
+</div></blockquote>
+</section>
+<section id="transcript-files">
+<h3>Transcript files<a class="headerlink" href="#transcript-files" title="Permalink to this headline">¶</a></h3>
+<p>OSVVM’s transcript capability simplifies having different parts of a testbench print to a common transcript file. It does this by providing an internal file identifier (TranscriptFile), and subprograms for opening (TranscriptOpen) files, closing (TranscriptClose) files, printing (print and writeline), and checking if the file is open (IsTranscriptOpen).</p>
+<p>Further information about OSVVM’s Transcript Files:</p>
+<blockquote>
+<div><p>Testbench Transcripting using OSVVM.
+For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/TranscriptPkg_user_guide.pdf">TranscriptPkg_user_guide.pdf</a>.</p>
+</div></blockquote>
+</section>
+<section id="constrained-random-test-generation">
+<h3>Constrained Random test generation<a class="headerlink" href="#constrained-random-test-generation" title="Permalink to this headline">¶</a></h3>
+<p>OSVVM’s RandomPkg provides a set of utilities for randomizing a value in a range, a value in a set, or a value with a weighted distribution. By itself this is not constrained random testing. OSVVM’s constrained random capability uses these utilities plus code patterns to randomize a value, operation, or sequence that is valid in a particular test environment.</p>
+<p>All constrained random testing is based on uniform randomization. Uniform randomization repeats values at a rate of log N, where N is the number of values generated. As a result, constrained random tests result in repeated stimulus – we have seen 5X or more for small problems.</p>
+<p>In OSVVM, we use Intelligent Coverage randomization (see below) as our primary randomization methodology to avoid repeated stimulus, and constrained random as a refinement methodology in our tests.</p>
+<p>Further information about OSVVM’s randomization capability:</p>
+<ul class="simple">
+<li><p>RandomPkg Usage Basics: Protected Types, Seeds, and Randomization</p></li>
+<li><p>Basic Randomization Overloading</p></li>
+<li><p>Weighted Randomization</p></li>
+<li><p>Normal, Poisson, FavorBig, FavorSmall distributions</p></li>
+<li><p>Creating constrained random tests</p></li>
+<li><p>For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/RandomPkg_user_guide.pdf">RandomPkg_user_guide.pdf</a>.</p></li>
+</ul>
+</section>
+<section id="functional-coverage">
+<h3>Functional Coverage<a class="headerlink" href="#functional-coverage" title="Permalink to this headline">¶</a></h3>
+<p>Functional coverage is code that observes execution of a test plan. As such, it is code you write to track whether important values, sets of values, or sequences of values that correspond to design or interface requirements, features, or boundary conditions have been exercised.</p>
+<p>Functional coverage is important for any randomized test generation approach since it is the only way to determine what the test has done. As the complexity of a design increases, 100% functional coverage assures us that all items in the test plan have been tested. Combine this with 100% code coverage and it indicates that testing is done.</p>
+<p>Further information about OSVVM’s Functional Coverage:</p>
+<blockquote>
+<div><p>The Basics of OSVVM’s Point and Cross Functional Coverage: AKA, Functional Coverage Made Easy with VHDL’s OSVVM
+Why you need functional coverage
+VHDL Functional Coverage is more capable than SystemVerilog
+For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/CoveragePkg_User_Guide.pdf">CoveragePkg_User_Guide.pdf</a>.</p>
+</div></blockquote>
+</section>
+<section id="intelligent-coverage-randomization-methodology">
+<h3>Intelligent Coverage™ Randomization Methodology<a class="headerlink" href="#intelligent-coverage-randomization-methodology" title="Permalink to this headline">¶</a></h3>
+<p>Verification starts with a test plan that identifies all items in a design that need to be tested. OSVVM, like other advanced methodologies, uses functional coverage to observe conditions on interfaces and within the design to validate that the items identified in the test plan have occurred. As such, functional coverage helps determine when testing is done.</p>
+<p>Unlike other methodologies, in OSVVM’s Intelligent Coverage methodology, functional coverage is the prime directive – it is where we start our process. Intelligent Coverage is done in the following steps.</p>
+<blockquote>
+<div><p>Write a high fidelity functional coverage (FC) model
+Randomly select a hole in the functional coverage
+Refine the initial randomization with sequential code
+Apply the refined sequence (one or more transactions)
+Observe Coverage</p>
+</div></blockquote>
+<p>The key point of Intelligent Coverage is that we randomize using the functional coverage. Then, if necessary, we refine the randomization using sequential code and any sequence generation method, including constrained random, algorithmic, directed, or file reading methods.</p>
+<p>Further information about OSVVM’s Intelligent Coverage Randomization:</p>
+<blockquote>
+<div><p>Intelligent Coverage Basics. AKA: Intelligent Coverage is 5X or More Faster than Constrained Random: .
+Weighted Intelligent Coverage. AKA: Functional Coverage Goals and Randomization Weights
+For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/CoveragePkg_User_Guide.pdf">CoveragePkg_User_Guide.pdf</a>.</p>
+</div></blockquote>
+</section>
+<section id="utilities-for-testbench-process-synchronization">
+<h3>Utilities for testbench process synchronization<a class="headerlink" href="#utilities-for-testbench-process-synchronization" title="Permalink to this headline">¶</a></h3>
+<p>The OSVVM package, TbUtilPkg, provides testbench utilities for synchronizing processes, as well as, utilities for clock and reset generation.</p>
+<p>Further information about OSVVM’s Scoreboard and FIFO capability:</p>
+<blockquote>
+<div><p>For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/TbUtilPkg_user_guide.pdf">TbUtilPkg_user_guide.pdf</a>.</p>
+</div></blockquote>
+<p>TbUtilPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.</p>
+</section>
+<section id="scoreboards-and-fifos-data-structures-for-verification">
+<h3>Scoreboards and FIFOs (data structures for verification)<a class="headerlink" href="#scoreboards-and-fifos-data-structures-for-verification" title="Permalink to this headline">¶</a></h3>
+<p>Scoreboards and FIFOs simplify test data checking when information flows from one part of a test to another with very little transformation.</p>
+<p>Further information about OSVVM’s Scoreboard and FIFO capability:</p>
+<blockquote>
+<div><p>For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/ScoreboardPkg_user_guide.pdf">ScoreboardPkg_user_guide.pdf</a>.</p>
+</div></blockquote>
+<p>ScoreboardPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.</p>
+</section>
+<section id="memory-models">
+<h3>Memory models<a class="headerlink" href="#memory-models" title="Permalink to this headline">¶</a></h3>
+<p>MemoryPkg simplifies the process of creating efficient data structures for memory models.</p>
+<p>Further information about OSVVM’s Scoreboard and FIFO capability:</p>
+<blockquote>
+<div><p>For more, see <a class="reference external" href="https://github.com/OSVVM/Documentation/blob/main/MemoryPkg_user_guide.pdf">MemoryPkg_user_guide.pdf</a>.</p>
+</div></blockquote>
+<p>MemoryPkg was first released in the 2016.11 OSVVM release and more blogs will be provided on it in the future.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="About OSVVM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AlertLogPkg_user_guide.html" class="btn btn-neutral float-right" title="AlertLogPkg User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Jim Lewis Licensed under CC BY-NC-ND 4.0.</p>
+  </div>Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/buildthedocs/sphinx.theme">theme</a>
+    provided by <a href="https://buildthedocs.github.io">Build the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

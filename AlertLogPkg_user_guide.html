@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlertLogPkg User Guide &mdash; OSVVM-Documentation 2022.02 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index" href="genindex.html" />
+    <link rel="prev" title="OSVVM Utility Library Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2022.02
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About OSVVM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Main Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">OSVVM Utility Library Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AlertLogPkg User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#whats-new-2020-05-a-quick-highlight">Whats New 2020.05:  A Quick Highlight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alertlogpkg-overview">AlertLogPkg Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-mode-errors-and-messaging-in-a-basic-testbench">Simple Mode: Errors and Messaging in a Basic Testbench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hierarchy-mode-model-based-error-and-message-handling">Hierarchy Mode: Model Based Error and Message Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#package-references">Package References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-the-test-name-and-alertlogids">Setting the Test Name and AlertLogIDs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setalertlogname-setting-the-test-name">SetAlertLogName: Setting the Test Name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getalertlogname">GetAlertLogName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getalertlogid-creating-hierarchy">GetAlertLogID: Creating Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#findalertlogid-find-an-alertlogid">FindAlertLogID: Find an AlertLogID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pathtail-used-to-discover-instance-name-of-a-component">PathTail - Used to Discover Instance Name of a Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getalertlogparentid">GetAlertLogParentID</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alert-method-reference">Alert Method Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alerttype">AlertType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alert">Alert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alertif-and-alertifnot">AlertIf and AlertIfNot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alertifequal-and-alertifnotequal">AlertIfEqual and AlertIfNotEqual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alertifdiff">AlertIfDiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incrementalertcount">IncrementAlertCount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setalertenable-alert-enable-disable">SetAlertEnable: Alert Enable / Disable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getalertenable">GetAlertEnable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setalertstopcount-alert-stop-counts">SetAlertStopCount: Alert Stop Counts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getalertstopcount">GetAlertStopCount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clearalertstopcounts-reset-alert-stop-counts">ClearAlertStopCounts: Reset Alert Stop Counts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clearalerts-reset-alert-counts">ClearAlerts: Reset Alert Counts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clearalertcounts-reset-alert-and-alert-stop-counts">ClearAlertCounts: Reset Alert and Alert Stop Counts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setglobalalertenable-alert-global-enable-disable">SetGlobalAlertEnable: Alert Global Enable / Disable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getglobalalertenable">GetGlobalAlertEnable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-and-getting-alert-counts">Reporting and Getting Alert Counts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alertcounttype">AlertCountType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reporting-alerts-reportalerts-reportnonzeroalerts">Reporting Alerts: ReportAlerts, ReportNonZeroAlerts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#report-summary">Report Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report-details">Report Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reportalerts-reporting-alerts">ReportAlerts: Reporting Alerts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reportnonzeroalerts">ReportNonZeroAlerts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overloaded-reportalerts-for-reporting-alertcounts">Overloaded ReportAlerts for Reporting AlertCounts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getalertcount">GetAlertCount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getenabledalertcount">GetEnabledAlertCount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getdisabledalertcount">GetDisabledAlertCount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#math-on-alertcounttype">Math on AlertCountType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sumalertcount-alertcounttype-to-integer-error-count">SumAlertCount: AlertCountType to Integer Error Count</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#log-method-reference">Log Method Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logtype">LogType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setlogenable-enable-disable-logging">SetLogEnable: Enable / Disable Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-log-enables-from-a-file">Reading Log Enables from a FILE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#islogenabled-getlogenable">IsLogEnabled /GetLogEnable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alert-and-log-prefix-and-suffix-to-message">Alert and Log Prefix and Suffix to Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#affirmation-reference">Affirmation Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#affirmif-affirmifnot">AffirmIf / AffirmIfNot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affirmifequal">AffirmIfEqual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affirmifdiff">AffirmIfDiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getaffirmcount">GetAffirmCount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incaffirmcount">IncAffirmCount</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alert-and-log-output-control-options">Alert and Log Output Control Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setalertlogjustify">SetAlertLogJustify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#osvvmoptionstype">OsvvmOptionsType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setalertlogoptions-configuring-report-options">SetAlertLogOptions: Configuring Report Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reportalertlogoptions-print-report-options">ReportAlertLogOptions: Print Report Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-alertlog-report-options">Getting AlertLog Report Options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deallocating-and-re-initializing-the-data-structure">Deallocating and Re-initializing the Data structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deallocatealertlogstruct">DeallocateAlertLogStruct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initializealertlogstruct">InitializeAlertLogStruct</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-alertlogpkg-and-friends">Compiling AlertLogPkg and Friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-notes-for-2020-05">Release Notes for 2020.05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-alertlogpkg">About AlertLogPkg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#future-work">Future Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-the-author-jim-lewis">About the Author - Jim Lewis</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OSVVM-Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+        
+          
+            <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>AlertLogPkg User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/OSVVM/Documentation/blob/main/docs/AlertLogPkg_user_guide.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alertlogpkg-user-guide">
+<h1>AlertLogPkg User Guide<a class="headerlink" href="#alertlogpkg-user-guide" title="Permalink to this headline">¶</a></h1>
+<section id="whats-new-2020-05-a-quick-highlight">
+<h2>Whats New 2020.05:  A Quick Highlight<a class="headerlink" href="#whats-new-2020-05-a-quick-highlight" title="Permalink to this headline">¶</a></h2>
+<p>The big enhancement in this revision is the addition of PASSED counts
+for both the top level error summary as well as a per hierarchy level
+(verification model and sublevels). For more details see the release
+notes at the end.</p>
+</section>
+<section id="alertlogpkg-overview">
+<h2>AlertLogPkg Overview<a class="headerlink" href="#alertlogpkg-overview" title="Permalink to this headline">¶</a></h2>
+<p>Error reporting and messaging is an important part of any testbench.</p>
+<p>Printing too many messages can significantly slow a test down. So for
+messaging, we need the ability to turn messages on (such as for debug or
+the final test report) and turn them off.</p>
+<p>For error reporting, we need to be able to report messages as they
+happen as well as produce a summary report when a test finishes. Hence,
+we need a mechanism to record the number of errors that have happened.</p>
+<p>VHDL assert and TextIO capability can certainly do some of this,
+however, these take work and lack in capability (until VHDL-2019 where
+we gave them a simple OSVVM like interface).</p>
+</section>
+<section id="simple-mode-errors-and-messaging-in-a-basic-testbench">
+<h2>Simple Mode: Errors and Messaging in a Basic Testbench<a class="headerlink" href="#simple-mode-errors-and-messaging-in-a-basic-testbench" title="Permalink to this headline">¶</a></h2>
+<p>First include OSVVM library in your testbench. You can do this by
+referencing the context declaration that includes all of OSVVM’s
+packages:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">Library</span><span class="w"> </span><span class="nn">osvvm</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">osvvm.OsvvmContext</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Name the test by calling SetAlertLogName. This name prints as part of
+the summary report that is done either at the end of the test or if the
+test reaches a stop condition (such as a FAILURE – more on this later).</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">SetAlertLogName</span><span class="p">(</span><span class="s">&quot;AxiLite_Uart1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Messages in OSVVM are called logs. The following indicates the start of
+a UART transmit transaction:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Uart Sending Data: X&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to_hstring</span><span class="p">(</span><span class="n">TxData</span><span class="p">),</span><span class="w"> </span><span class="n">ALWAYS</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will print as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Log ALWAYS Uart Sending Data: X4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>Logs have levels ALWAYS, DEBUG, FINAL, INFO, and PASSED. Log level
+ALWAYS always prints. The remaining logs print when they are enabled and
+are disabled by default. ALWAYS is the default if a level is not
+specified.</p>
+<p>Enable a log with SetLogEnable.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">SetLogEnable</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now that we have INFO messages enabled, let’s rewrite our original log
+to use INFO as we may wish to turn it off when we are running
+regressions.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Uart Sending Data: X&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to_hstring</span><span class="p">(</span><span class="n">TxData</span><span class="p">),</span><span class="w"> </span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will print as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Log INFO Uart Sending Data: X4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>The same method is used to turn DEBUG or any other message on or off.
+Generally it is recommended to call SetLogEnable from the top level
+testbench, however, it can be called from anywhere in the testbench
+infrastructure.</p>
+<p>Alerts are for signaling error conditions. The following is a protocol
+checker that flags an error if the X86Lite model receives an acknowledge
+when the interface is idle.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="nc">X86_Rdy_Check</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">Rising_Edge</span><span class="p">(</span><span class="n">Clk</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">nRdy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertIf</span><span class="p">(</span><span class="n">BusIdle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;X86 Lite received ready when it was idle&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will print as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Alert ERROR X86 Lite received ready when it was idle at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>Alerts have levels FAILURE, ERROR, and WARNING. Error is the default if
+a level is not specified. Alerts are enabled by default. Alerts are
+disabled using SetAlertEnable.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">SetAlertEnable</span><span class="p">(</span><span class="n">WARNING</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Test still fails, see Disabling Alerts</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Affirmations are for adding checking to tests. When an affirmation
+passes, it calls log with PASSED and when it fails it calls Alert with
+ERROR.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">AffirmIf</span><span class="p">(</span><span class="n">RxData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Expected</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RxData, Actual: &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to_hstring</span><span class="p">(</span><span class="n">RxDat</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;Expected: &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to_hstring</span><span class="p">(</span><span class="n">Expected</span><span class="p">))</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note there are two strings associated with AffirmIf. The first is for
+the received value from the DUT (actual) and the second is for the
+expected value. When AffirmIf passes and log level “PASSED” is enabled,
+the following message will print.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Log PASSED RxData, Actual: X4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>When AffirmIf is FALSE, the following message will print.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Alert ERROR RxData, Actual: <span class="m">52</span> Expected: 4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>As Alerts (FAILURE, ERROR, WARNING), PASSED, and affirmations occur, a
+data structure inside the AlertLogPkg tabulates them. When the test is
+done, a summary message can be created by calling ReportAlerts.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">ReportAlerts</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the test passed, a message such as the following prints.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% DONE PASSED AxiLite_Uart1 Passed: <span class="m">14</span> Affirmations Checked: <span class="m">14</span> at <span class="m">380810</span> ns
+</pre></div>
+</div>
+<p>If the test failed, a message such as the following prints. The line
+starts with “%%” and prints on a single line (here shown with line wrap
+to fit in the text).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% DONE FAILED AxiLite_Uart1 Total Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">6</span> Failures: <span class="m">0</span> Errors: <span class="m">6</span> Warnings: <span class="m">0</span> Passed: <span class="m">8</span> Affirmations Checked: <span class="m">14</span> at <span class="m">380810</span> ns
+</pre></div>
+</div>
+<p>This is enough to get you started with basic testbenches. Read on when
+you are ready for more capability. Even for basic testbenches, you will
+want to learn about the overloading of Alerts and Affirmations as well
+as alert stop counts.</p>
+</section>
+<section id="hierarchy-mode-model-based-error-and-message-handling">
+<h2>Hierarchy Mode: Model Based Error and Message Handling<a class="headerlink" href="#hierarchy-mode-model-based-error-and-message-handling" title="Permalink to this headline">¶</a></h2>
+<p>As testbench complexity increases, it helps to know which model a
+particular error came from. This is what hierarchy mode is all about. We
+also get a better summary report from ReportAlerts.</p>
+<p>First include OSVVM library in your testbench. You can do this by
+referencing the context declaration that includes all of OSVVM’s
+packages:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">Library</span><span class="w"> </span><span class="nn">osvvm</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">osvvm.OsvvmContext</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Name the test by calling SetAlertLogName. This name prints as part of
+the summary report that is done either at the end of the test or if the
+test reaches a stop condition (such as a FAILURE – more on this later).</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">SetAlertLogName</span><span class="p">(</span><span class="s">&quot;AxiLite_Uart1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In hierarchy mode, each source (generally each verification model) has
+its own AlertLogID. Create one by declaring it.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">signal</span><span class="w"> </span><span class="n">ModelID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Next get the AlertLogID by calling GetAlertLogID</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">Initialize</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="n">ModelID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;AxiMaster&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">Initialize</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>It would be nice to be able to do this in one step in a declaration such
+as the following, and indeed all simulators it has been tested on it
+works, but formally the VHDL LRM says one is not allowed to access a
+protected type in a declarative region.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">signal</span><span class="w"> </span><span class="n">ModelID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;AxiMaster&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Sometimes a model may wish to further classify its Alerts and Logs into
+subclasses. This is done as follows.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">signal</span><span class="w"> </span><span class="n">ModelID</span><span class="p">,</span><span class="w"> </span><span class="n">ProtocolID</span><span class="p">,</span><span class="w"> </span><span class="n">CheckerID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">Initialize</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="w">  </span><span class="k">Variable</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="n">ID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;AxiMaster&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ModelID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ProtocolID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;AxiMaster: Protocol&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">CheckerID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;AxiMaster: Checker&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">Initialize</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ok. The hard part is done. On all calls to Log, SetLogEnable, AlertIf,
+AffirmIf, SetAlertEnable, … the AlertLogID is specified as the first
+parameter to the call.</p>
+<p>Alerts and Logs can be enabled (or disabled) either for the entire
+testbench or for a single model. However to do this in the testbench, we
+need to get the AlertLogID for the model. No problem. We can use
+GetAlertLogID to look up the AlertLogID by using the same string used in
+its definition in the component.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">signal</span><span class="w"> </span><span class="n">TBID</span><span class="p">,</span><span class="w"> </span><span class="n">AxiMasterID</span><span class="p">,</span><span class="w"> </span><span class="n">UartTxID</span><span class="p">,</span><span class="w"> </span><span class="n">UartRxID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">Control</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="n">TBID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;TB&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AxiMasterID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;AxiMaster&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- These names must match</span><span class="w"></span>
+<span class="w">  </span><span class="n">UartTxID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;UartTx&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- the names used in the component</span><span class="w"></span>
+<span class="w">  </span><span class="n">UartRxID</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;UartRx&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">SetLogEnable</span><span class="p">(</span><span class="n">PASSED</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Turn on for ALL Levels</span><span class="w"></span>
+<span class="w">  </span><span class="n">SetLogEnable</span><span class="p">(</span><span class="n">UartTxID</span><span class="p">,</span><span class="w"> </span><span class="n">INFO</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Turn on just UartTxID</span><span class="w"></span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="nc">Control</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Above first we turned on PASSED for all AlertLogIDs, but only turned on
+INFO for the UartTx model. If you have worked with UARTs you will
+understand that this is an important capability in tracking what is
+happening in the UART. If we cannot do this, we have to hunt for the
+infrequent message from the UART mixed in with the multitude of messages
+from the AxiMaster.</p>
+<p>Adding log in the UartTx model.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">Log</span><span class="p">(</span><span class="n">ModelID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uart Sending Data: X&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to_hstring</span><span class="p">(</span><span class="n">TxData</span><span class="p">),</span><span class="w"> </span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will print as the following. Note the context information, “In
+UartTx,”.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Log INFO In UartTx, Uart Sending Data: X4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>Updating the protocol checker in the X86Lite model.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="nc">X86_Rdy_Check</span><span class="o">:</span><span class="w"> </span><span class="k">process</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">Rising_Edge</span><span class="p">(</span><span class="n">Clk</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">nRdy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertIf</span><span class="p">(</span><span class="n">ProtocolID</span><span class="p">,</span><span class="w"> </span><span class="n">BusIdle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;X86 Lite received ready when it was idle&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will print as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Alert ERROR In X86Lite, X86 Lite received ready when it was idle at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>Updating the affirmation using the equivalent form of AffirmIfEqual and
+doing it from the testbench.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">AffirmIfEqual</span><span class="p">(</span><span class="n">TBID</span><span class="p">,</span><span class="w"> </span><span class="n">RxData</span><span class="p">,</span><span class="w"> </span><span class="n">Expected</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RxData, &quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When AffirmIfEqual passes and log level “PASSED” is enabled, the
+following message will print.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Log PASSED In TB, RxData, Actual: X4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>When AffirmIfEqual fails, the following message will print.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Alert ERROR In TB, RxData, Actual: <span class="m">52</span> Expected: 4A at <span class="m">15110</span> ns
+</pre></div>
+</div>
+<p>When the test is done, a summary message is created by calling
+ReportAlerts.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">ReportAlerts</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the test passed, we get the same simple message as for Simple Mode.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% DONE PASSED AxiLite_Uart1 Passed: <span class="m">14</span> Affirmations Checked: <span class="m">14</span> at <span class="m">380810</span> ns
+</pre></div>
+</div>
+<p>If the test failed, we get a summary as well as details for each source.
+The line starts with “%%” and prints on a single line (here shown with
+line wrap to fit in the text).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% DONE FAILED AxiLite_Uart1 Total Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">7</span> Failures: <span class="m">0</span> Errors: <span class="m">7</span> Warnings: <span class="m">0</span> Passed: <span class="m">8</span> Affirmations Checked: <span class="m">14</span> at <span class="m">380810</span> ns
+%% Default Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span>
+%% OSVVM Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span>
+%% TB Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+%% AxiMaster Failures: <span class="m">0</span> Errors: <span class="m">3</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span>
+%% AxiMaster: Protocol Failures: <span class="m">0</span> Errors: <span class="m">1</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span>
+%% AxiMaster: Checker Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+%% UartTx Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+%% UartRx Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+</pre></div>
+</div>
+<p>Note errors in the Default bin would be the result of calling an alert
+or affirmation without an AlertLogID.</p>
+</section>
+<section id="package-references">
+<h2>Package References<a class="headerlink" href="#package-references" title="Permalink to this headline">¶</a></h2>
+<p>To keep it simple use the OSVVM context clause:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">library</span><span class="w"> </span><span class="nn">osvvm</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="n">context</span><span class="w"> </span><span class="n">osvvm</span><span class="p">.</span><span class="n">OsvvmContext</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Alternately to just use AlertLogPkg use the following package
+references:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">library</span><span class="w"> </span><span class="nn">osvvm</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">osvvm.OsvvmGlobalPkg.</span><span class="k">all</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- required to call SetAlertLogOptions</span><span class="w"></span>
+<span class="k">use</span><span class="w"> </span><span class="nn">osvvm.AlertLogPkg.</span><span class="k">all</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="setting-the-test-name-and-alertlogids">
+<h2>Setting the Test Name and AlertLogIDs<a class="headerlink" href="#setting-the-test-name-and-alertlogids" title="Permalink to this headline">¶</a></h2>
+<p>Tests always start in simple model. Hierarchical mode is automatically
+entered when GetAlertLogID is called.</p>
+<p>All overloading supported for simple mode is also supported in
+hierarchical mode. The only difference is that in hierarchical mode, the
+first parameter is the AlertLogID.</p>
+<p>Also note that when in hierarchical mode, any alert, log, or affirmation
+that is called without an AlertLogID will use the “Default” bin.</p>
+<section id="setalertlogname-setting-the-test-name">
+<h3>SetAlertLogName: Setting the Test Name<a class="headerlink" href="#setalertlogname-setting-the-test-name" title="Permalink to this headline">¶</a></h3>
+<p>SetAlertLogName sets the name of the current test that is printed by
+ReportAlerts. This is particularly recommended if a test can end due to
+a stop count, such as FAILURE as ReportAlerts is automatically called.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertLogName</span><span class="p">(</span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">SetAlertLogName</span><span class="p">(</span><span class="s">&quot;AxiLite_Uart1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getalertlogname">
+<h3>GetAlertLogName<a class="headerlink" href="#getalertlogname" title="Permalink to this headline">¶</a></h3>
+<p>GetAlertLogName returns the string value of name associated with an
+AlertLogID. If no AlertLogID is specified, it will return the name set
+by SetAlertLogName.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogName</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getalertlogid-creating-hierarchy">
+<h3>GetAlertLogID: Creating Hierarchy<a class="headerlink" href="#getalertlogid-creating-hierarchy" title="Permalink to this headline">¶</a></h3>
+<p>Each level in a hierarchy is referenced with an AlertLogID. The
+function, GetAlertLogID, creates a new AlertLogID. If an AlertLogID
+already exists for the specified name, GetAlertLogID will return its
+AlertLogID. It is recommended to use the instance label as the Name. The
+interface for GetAlertLogID is as follows.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ParentID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">CreateHierarchy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TRUE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The CreateHierarchy parameter is intended to allow packages to use a
+unique AlertLogID for reporting Alerts without creating hierarchy in
+ReportAlerts. As a function, GetAlertLogID can be called while
+elaborating the design by using it to initialize a constant or signal:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">Constant</span><span class="w"> </span><span class="n">UartID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="s">&quot;UART_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">);</span><span class="w"></span>
+<span class="w">                                                </span><span class="c1">-- Name, Parent AlertLogID</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="findalertlogid-find-an-alertlogid">
+<h3>FindAlertLogID: Find an AlertLogID<a class="headerlink" href="#findalertlogid-find-an-alertlogid" title="Permalink to this headline">¶</a></h3>
+<p>The function, FindAlertLogID, finds an existing AlertLogID. Only use it
+after time 0 ns when an AlertLogID may or may not exist. If the
+AlertLogID is not found, ALERTLOG_ID_NOT_FOUND is returned. Caution, at
+time 0 ns, FindAlertLogID may return ALERTLOG_ID_NOT_FOUND for an ID
+that has not been initialized by the model yet. Use GetAlertID for this
+situation. It is ok if the testbench creates the ID and then the model
+uses it.</p>
+<p>The interface for FindAlertLogID is as follows.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">FindAlertLogID</span><span class="p">(</span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">ParentID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">FindAlertLogID</span><span class="p">(</span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note the single parameter FindAlertLogID is only useful when there is
+only one AlertLogID with a particular name (such as for top-level
+instance names). As a function, FindAlertLogID can be called while
+elaborating the design by using it to initialize a constant or signal.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">constant</span><span class="w"> </span><span class="n">UartID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FindAlertLogID</span><span class="p">(</span><span class="n">Name</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;UART_1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="pathtail-used-to-discover-instance-name-of-a-component">
+<h3>PathTail - Used to Discover Instance Name of a Component<a class="headerlink" href="#pathtail-used-to-discover-instance-name-of-a-component" title="Permalink to this headline">¶</a></h3>
+<p>When used in conjunction with attribute PATH_NAME applied to an entity
+name, PathTail returns the instance name of component.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">constant</span><span class="w"> </span><span class="n">CPU_ALERT_ID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertLogID</span><span class="p">(</span><span class="n">PathTail</span><span class="p">(</span><span class="n">CpuModel</span><span class="na">&#39;PATH_NAME</span><span class="p">),</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                                                      </span><span class="c1">-- Name (string value),         Parent AlertLogID</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getalertlogparentid">
+<h3>GetAlertLogParentID<a class="headerlink" href="#getalertlogparentid" title="Permalink to this headline">¶</a></h3>
+<p>Get the AlertLogID of the parent of a specified AlertLogID.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogParentID</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="alert-method-reference">
+<h2>Alert Method Reference<a class="headerlink" href="#alert-method-reference" title="Permalink to this headline">¶</a></h2>
+<p>Alert is intended for parameter error checking. For self-checking see
+affirmations.</p>
+<section id="alerttype">
+<h3>AlertType<a class="headerlink" href="#alerttype" title="Permalink to this headline">¶</a></h3>
+<p>Alert levels can be FAILURE, ERROR, or WARNING.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">FAILURE</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="p">,</span><span class="w"> </span><span class="n">WARNING</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="alert">
+<h3>Alert<a class="headerlink" href="#alert" title="Permalink to this headline">¶</a></h3>
+<p>Alert generates an alert. The following overloading is supported.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">alert</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="k">procedure</span><span class="w"> </span><span class="n">Alert</span><span class="p">(</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Usage of alert:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">Alert</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uart Parity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="n">Alert</span><span class="p">(</span><span class="s">&quot;Uart Parity&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- ERROR by default</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="alertif-and-alertifnot">
+<h3>AlertIf and AlertIfNot<a class="headerlink" href="#alertif-and-alertifnot" title="Permalink to this headline">¶</a></h3>
+<p>Alert has two conditional forms, AlertIf and AlertIfNot. The following
+is their overloading.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIf</span><span class="p">(</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">AlertIf</span><span class="p">(</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfNot</span><span class="p">(</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">AlertIfNot</span><span class="p">(</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIf</span><span class="p">(</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">AlertIf</span><span class="p">(</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfNot</span><span class="p">(</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">AlertIfNot</span><span class="p">(</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                   </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Usage of conditional alerts:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="n">AlertIf</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="n">Break</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uart Break&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="n">AlertIfNot</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="n">ReadValid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Read&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FAILURE</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="n">AlertIf</span><span class="p">(</span><span class="n">Break</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uart Break&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="n">AlertIfNot</span><span class="p">(</span><span class="n">ReadValid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Read Failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FAILURE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The function form is convenient for use for conditional exit of a loop.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">exit</span><span class="w"> </span><span class="n">AlertIfNot</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="n">ReadValid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in ReadCovDb while reading …&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="n">FAILURE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="alertifequal-and-alertifnotequal">
+<h3>AlertIfEqual and AlertIfNotEqual<a class="headerlink" href="#alertifequal-and-alertifnotequal" title="Permalink to this headline">¶</a></h3>
+<p>Alert form AlertIfEqual and AlertIfNotEqual to check two values. In the
+following, AType can be std_logic, std_logic_vector, unsigned, signed,
+integer, real, character, string, or time.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfEqual</span><span class="p">(</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfNotEqual</span><span class="p">(</span><span class="w"> </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfEqual</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfNotEqual</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="alertifdiff">
+<h3>AlertIfDiff<a class="headerlink" href="#alertifdiff" title="Permalink to this headline">¶</a></h3>
+<p>Alert form AlertIfDiff is for comparing two files.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfDiff</span><span class="w"> </span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Name1</span><span class="p">,</span><span class="w"> </span><span class="n">Name2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfDiff</span><span class="w"> </span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">File1</span><span class="p">,</span><span class="w"> </span><span class="n">File2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfDiff</span><span class="w"> </span><span class="p">(</span><span class="n">Name1</span><span class="p">,</span><span class="w"> </span><span class="n">Name2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AlertIfDiff</span><span class="w"> </span><span class="p">(</span><span class="k">file</span><span class="w"> </span><span class="n">File1</span><span class="p">,</span><span class="w"> </span><span class="n">File2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">text</span><span class="p">;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="incrementalertcount">
+<h3>IncrementAlertCount<a class="headerlink" href="#incrementalertcount" title="Permalink to this headline">¶</a></h3>
+<p>Intended as a silent alert. Used by CoveragePkg.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Hierarchy</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">IncAlertCount</span><span class="p">(</span><span class="w"> </span><span class="c1">-- A silent form of alert</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- Global Alert Counters</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">IncAlertCount</span><span class="p">(</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="setalertenable-alert-enable-disable">
+<h3>SetAlertEnable: Alert Enable / Disable<a class="headerlink" href="#setalertenable-alert-enable-disable" title="Permalink to this headline">¶</a></h3>
+<p>Alerts are enabled by default. SetAlertEnable allows alert levels to be
+individually enabled or disabled. When used without AlertLogID,
+SetAlertEnable sets a value for all AlertLogIDs.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertEnable</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="c1">-- Level, Enable</span><span class="w"></span>
+<span class="n">SetAlertEnable</span><span class="p">(</span><span class="n">WARNING</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When an AlertLogID is used, SetAlertEnable sets a value for that
+AlertLogID, and if DescendHierarchy is TRUE, it’s the AlertLogID’s of
+its children.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertEnable</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">DescendHierarchy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getalertenable">
+<h3>GetAlertEnable<a class="headerlink" href="#getalertenable" title="Permalink to this headline">¶</a></h3>
+<p>Get the value of the current alert enable for either a specific
+AlertLogId or for the global alert counter.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Hierarchy</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertEnable</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- Global Alert Counter</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertEnable</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="setalertstopcount-alert-stop-counts">
+<h3>SetAlertStopCount: Alert Stop Counts<a class="headerlink" href="#setalertstopcount-alert-stop-counts" title="Permalink to this headline">¶</a></h3>
+<p>For tests that complete with numerous errors, perhaps it is better to
+stop after some small number of errors have occurred and start
+debugging. That is the job of alert stop counts.</p>
+<p>When an alert stop count is reached, the simulation stops. When used
+without AlertLogID, SetAlertStopCount sets the alert stop count for the
+top level to the specified value if the current count is integer’right,
+otherwise, it sets it to the specified value plus the current count.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertStopCount</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="c1">-- Level, Count</span><span class="w"></span>
+<span class="n">SetAlertStopCount</span><span class="p">(</span><span class="n">ERROR</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Stop if 20 errors occur</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When used with an AlertLogID, SetAlertStopCount sets the value for the
+specified AlertLogID and all of its parents. At each level, the current
+alert stop count is set to the specified value when the current count is
+integer’right, otherwise, the value is set to the specified value plus
+the current count.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertStopCount</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">integer</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="c1">-- AlertLogID, Level, Count</span><span class="w"></span>
+<span class="n">SetAlertStopCount</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>By default, the AlertStopCount for WARNING and ERROR are integer’right,
+and FAILURE is 0.</p>
+</section>
+<section id="getalertstopcount">
+<h3>GetAlertStopCount<a class="headerlink" href="#getalertstopcount" title="Permalink to this headline">¶</a></h3>
+<p>Get the value of the current alert stop count for either a specific
+AlertLogId or for the global alert counter.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Hierarchy</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertStopCount</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- Global Alert Stop Count</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertStopCount</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="clearalertstopcounts-reset-alert-stop-counts">
+<h3>ClearAlertStopCounts: Reset Alert Stop Counts<a class="headerlink" href="#clearalertstopcounts-reset-alert-stop-counts" title="Permalink to this headline">¶</a></h3>
+<p>ClearAlerts resets alert stop counts back to their default.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">ClearAlertStopCounts</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="clearalerts-reset-alert-counts">
+<h3>ClearAlerts: Reset Alert Counts<a class="headerlink" href="#clearalerts-reset-alert-counts" title="Permalink to this headline">¶</a></h3>
+<p>ClearAlerts resets alert counts to 0. Recommended as an alternative to
+SetGlobalAlertEnable – just after the design enters reset, call
+ClearAlerts.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">ClearAlerts</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="clearalertcounts-reset-alert-and-alert-stop-counts">
+<h3>ClearAlertCounts: Reset Alert and Alert Stop Counts<a class="headerlink" href="#clearalertcounts-reset-alert-and-alert-stop-counts" title="Permalink to this headline">¶</a></h3>
+<p>ClearAlerts resets alert counts to 0 and alert stop counts back to their
+default.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">ClearAlertCounts</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="setglobalalertenable-alert-global-enable-disable">
+<h3>SetGlobalAlertEnable: Alert Global Enable / Disable<a class="headerlink" href="#setglobalalertenable-alert-global-enable-disable" title="Permalink to this headline">¶</a></h3>
+<p>SetGlobalAlertEnable allows Alerts to be globally enabled and disabled.
+The Global Alert Enable is enabled by default.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetGlobalAlertEnable</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">EnableType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>impure function SetGlobalAlertEnable (A : EnableType := TRUE) return
+EnableType ;</p>
+<p>Originally intended to be used to disable alerts during startup, as
+shown below. Instead, for most applications we recommend using
+ClearAlerts just after reset.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">InitAlerts</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">Process</span><span class="w"></span>
+<span class="w">  </span><span class="k">constant</span><span class="w"> </span><span class="n">DisableAlerts</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">SetGlobalAlertEnable</span><span class="p">(</span><span class="n">FALSE</span><span class="p">);</span><span class="w"></span>
+<span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="n">nReset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Deassertion of reset</span><span class="w"></span>
+<span class="w">  </span><span class="n">SetGlobalAlertEnable</span><span class="p">(</span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- enable alerts</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getglobalalertenable">
+<h3>GetGlobalAlertEnable<a class="headerlink" href="#getglobalalertenable" title="Permalink to this headline">¶</a></h3>
+<p>Get the current value of the global alert enable</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetGlobalAlertEnable</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="reporting-and-getting-alert-counts">
+<h2>Reporting and Getting Alert Counts<a class="headerlink" href="#reporting-and-getting-alert-counts" title="Permalink to this headline">¶</a></h2>
+<section id="alertcounttype">
+<h3>AlertCountType<a class="headerlink" href="#alertcounttype" title="Permalink to this headline">¶</a></h3>
+<p>Alerts are stored as a value of AlertCountType.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">subtype</span><span class="w"> </span><span class="n">AlertIndexType</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="n">FAILURE</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">WARNING</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">type</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="p">(</span><span class="n">AlertIndexType</span><span class="p">)</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>CAUTION: When working with values of AlertCountType, be sure to use
+named association as the type ordering may change in the future.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">variable</span><span class="w"> </span><span class="n">ExternalErrors</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">ExternalErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="n">FAILURE</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">WARNING</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="reporting-alerts-reportalerts-reportnonzeroalerts">
+<h3>Reporting Alerts: ReportAlerts, ReportNonZeroAlerts<a class="headerlink" href="#reporting-alerts-reportalerts-reportnonzeroalerts" title="Permalink to this headline">¶</a></h3>
+<section id="report-summary">
+<h4>Report Summary<a class="headerlink" href="#report-summary" title="Permalink to this headline">¶</a></h4>
+<p>The report summary is the first line printed by
+ReportAlerts/ReportNonZeroAlerts</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% DONE FAILED t17_print_ctrl Total Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">2</span> Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Total Disabled Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">2</span> Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span> Affirmations Checked: <span class="m">2</span> at <span class="m">20160</span> ns
+</pre></div>
+</div>
+<p>Note in the above message, two affirmations were done and they both
+resulted in an error, however, the error was disabled (see
+SetAlertEnable) so it reported as a Disabled Error.</p>
+<p>Options can be enabled or disabled using SetAlertLogOptions. Let’s look
+at the report piece by piece.</p>
+<p>If Total Errors /= 0, then the following part of the message prints. In
+this case, Total Errors is nonzero since FailedOnDisabledErrors is
+enabled (default) and the disabled errors count as test errors. Hence,
+Failures, Errors, and Warnings are all 0.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Total Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">2</span> Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span>
+</pre></div>
+</div>
+<p>If FailedOnDisabledErrors is disabled, then the same test will PASS as
+shown below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% DONE PASSED t17_print_ctrl Total Disabled Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">2</span> Passed: <span class="m">0</span> Affirmations Checked: <span class="m">2</span> at <span class="m">20160</span> ns
+</pre></div>
+</div>
+<p>Next is the Total Disabled Errors summary. It will print if the
+DisabledAlerts /= 0 or if PrintDisabledAlerts is enabled (default is
+disabled).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Total Disabled Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">2</span>
+</pre></div>
+</div>
+<p>Next is the details of the Disabled Errors. These will print if
+FailedOnDisabledErrors is enabled and DisabledAlerts /= 0 or if
+PrintDisabledAlerts is enabled.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Total Disabled Error<span class="o">(</span>s<span class="o">)</span> <span class="o">=</span> <span class="m">2</span> Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span>
+</pre></div>
+</div>
+<p>Next is the printing of the pass and affirmation counts. If PrintPassed
+is enabled (default), the passed count will be printed. If
+PrintAffirmations is enabled (default is disabled) or Affirmation Count
+/= 0 then the passed and affirmation counts will be printed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Passed: <span class="m">0</span> Affirmations Checked: <span class="m">2</span>
+</pre></div>
+</div>
+</section>
+<section id="report-details">
+<h4>Report Details<a class="headerlink" href="#report-details" title="Permalink to this headline">¶</a></h4>
+<p>When in hierarchy mode, a summary for each AlertLogID will be printed.
+This can include the following details. Each line summary starts with
+“%%”.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Default Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Disabled Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span> Affirmations: <span class="m">4</span>
+%% OSVVM Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Disabled Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span> Affirmations: <span class="m">0</span>
+%% Cpu1 Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Disabled Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span> Affirmations: <span class="m">4</span>
+%% UartTx Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Disabled Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span> Affirmations: <span class="m">4</span>
+%% UartRx Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Disabled Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span> Affirmations: <span class="m">4</span>
+</pre></div>
+</div>
+<p>The Failures, Errors, and Warnings always prints.</p>
+<p>Disabled Failures, Errors, and Warnings only print if
+PrintDisabledAlerts is enabled (default is disabled).</p>
+<p>Passed only prints if PrintPassed is enabled (default).</p>
+<p>Affirmations only prints if PrintAffirmations is enabled (default is
+disabled).</p>
+<p>With PrintDisabledAlerts disabled (default), PrintPassed enabled
+(default), and PrintAffirmations disabled (default), and DisabledAlerts
+= 0, the report will be simplified to the following.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%% Default Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+%% OSVVM Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">0</span>
+%% Cpu1 Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+%% UartTx Failures: <span class="m">0</span> Errors: <span class="m">0</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+%% UartRx Failures: <span class="m">0</span> Errors: <span class="m">2</span> Warnings: <span class="m">0</span> Passed: <span class="m">2</span>
+</pre></div>
+</div>
+</section>
+<section id="reportalerts-reporting-alerts">
+<h4>ReportAlerts: Reporting Alerts<a class="headerlink" href="#reportalerts-reporting-alerts" title="Permalink to this headline">¶</a></h4>
+<p>At test completion alerts are reported with ReportAlerts.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">ReportAlerts</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ExternalErrors</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">ReportAlerts</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>ReportAlerts has 3 optional parameters: Name, AlertLogID, and
+ExternalErrors. Name overrides the name specified by SetAlertLogName.
+AlertLogID allows reporting alerts for a specific AlertLogID and its
+children (if any). ExternalErrors allows separately detected errors to
+be reported. ExternalErrors is type AlertCountType and the value
+(FAILURE =&gt; 0, ERROR =&gt; 5, WARNING =&gt; 1) indicates detection logic
+separate from AlertLogPkg saw 0 Failures, 5 Errors, and 1 Warning. See
+notes under AlertCountType.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--            Name, AlertLogID, ExternalErrors</span><span class="w"></span>
+<span class="n">ReportAlerts</span><span class="p">(</span><span class="s">&quot;Uart1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">FAILURE</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">WARNING</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="reportnonzeroalerts">
+<h4>ReportNonZeroAlerts<a class="headerlink" href="#reportnonzeroalerts" title="Permalink to this headline">¶</a></h4>
+<p>When in hierarchy mode, a summary for each AlertLogID will be printed.
+This can include the following details. Each summary starts with “%%”.</p>
+<p>Within the hierarchy, if a level has no alerts set, then that level will
+not be printed.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">ReportNonZeroAlerts</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ExternalErrors</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="overloaded-reportalerts-for-reporting-alertcounts">
+<h4>Overloaded ReportAlerts for Reporting AlertCounts<a class="headerlink" href="#overloaded-reportalerts-for-reporting-alertcounts" title="Permalink to this headline">¶</a></h4>
+<p>ReportAlerts can also be used to print a passed/failed message for an
+AlertCount that is passed into the procedure call. This will not use any
+of the internal settings or information.</p>
+<p>procedure ReportAlerts ( Name : String ; AlertCount : AlertCountType) ;</p>
+<p>This is useful to accumulate values returned by different phases of a
+test that need to be reported separately.</p>
+<p>ReportAlerts(“Test1: Final”, Phase1AlertCount + Phase2AlertCount) ;</p>
+</section>
+</section>
+<section id="getalertcount">
+<h3>GetAlertCount<a class="headerlink" href="#getalertcount" title="Permalink to this headline">¶</a></h3>
+<p>GetAlertCount returns the AlertCount value at AlertLogID. GetAlertCount
+is overloaded to return either AlertCountType or integer.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertCount</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertCount</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">TopTotalErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertCount</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- AlertCount for Top of hierarchy</span><span class="w"></span>
+<span class="n">UartTotalErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertCount</span><span class="p">(</span><span class="n">UartID</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- AlertCount for UartID</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getenabledalertcount">
+<h3>GetEnabledAlertCount<a class="headerlink" href="#getenabledalertcount" title="Permalink to this headline">¶</a></h3>
+<p>GetEnabledAlertCount is similar to GetAlertCount except it returns 0 for
+disabled alert levels. GetEnabledAlertCount is overloaded to return
+either AlertCountType or integer.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetEnabledAlertCount</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetEnabledAlertCount</span><span class="w"> </span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALERTLOG_BASE_ID</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">TopTotalErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetEnabledAlertCount</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Top of hierarchy</span><span class="w"></span>
+<span class="n">UartTotalErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetEnabledAlertCount</span><span class="p">(</span><span class="n">UartID</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- UartID</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getdisabledalertcount">
+<h3>GetDisabledAlertCount<a class="headerlink" href="#getdisabledalertcount" title="Permalink to this headline">¶</a></h3>
+<p>GetDisabledAlertCount returns the count of disabled errors for either
+the entire design hierarchy or a particular AlertLogID.
+GetDisabledAlertCount is relevant since a “clean” passing design will
+not have any disabled alert counts.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetDisabledAlertCount</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetDisabledAlertCount</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetDisabledAlertCount</span><span class="p">(</span><span class="n">AlertLogID</span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetDisabledAlertCount</span><span class="p">(</span><span class="n">AlertLogID</span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that disabled errors are not added to higher levels in the
+hierarchy. Hence, often GetAlertCount /= GetEnabledAlertCount +
+GetDisabledAlertCount.</p>
+</section>
+<section id="math-on-alertcounttype">
+<h3>Math on AlertCountType<a class="headerlink" href="#math-on-alertcounttype" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="s">&quot;+&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertCountType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">TotalAlertCount</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Phase1Count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Phase2Count</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="n">TotalErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">GetAlertCount</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ExpectedErrors</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="n">NegateErrors</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="n">ExpectedErrors</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="sumalertcount-alertcounttype-to-integer-error-count">
+<h3>SumAlertCount: AlertCountType to Integer Error Count<a class="headerlink" href="#sumalertcount-alertcounttype-to-integer-error-count" title="Permalink to this headline">¶</a></h3>
+<p>SumAlertCount sums up the FAILURE, ERROR, and WARNING values into a
+single integer value.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">SumAlertCount</span><span class="p">(</span><span class="n">AlertCount</span><span class="o">:</span><span class="w"> </span><span class="n">AlertCountType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">integer</span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">ErrorCountInt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">SumAlertCount</span><span class="p">(</span><span class="n">AlertCount</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="log-method-reference">
+<h2>Log Method Reference<a class="headerlink" href="#log-method-reference" title="Permalink to this headline">¶</a></h2>
+<section id="logtype">
+<h3>LogType<a class="headerlink" href="#logtype" title="Permalink to this headline">¶</a></h3>
+<p>Log levels can be ALWAYS, DEBUG, PASSED, or INFO.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="w"> </span><span class="n">LogType</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">ALWAYS</span><span class="p">,</span><span class="w"> </span><span class="n">DEBUG</span><span class="p">,</span><span class="w"> </span><span class="n">FINAL</span><span class="p">,</span><span class="w"> </span><span class="n">INFO</span><span class="p">,</span><span class="w"> </span><span class="n">PASSED</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="log">
+<h3>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h3>
+<p>If the log level is enabled, then the log message will print. The Enable
+parameter indicates to print the message even if the log level is not
+enabled. This is useful to enable printing for a single transaction.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Log if LogType is enabled</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"> </span><span class="c1">-- also log if Enable is TRUE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- Log if LogType is enabled</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"> </span><span class="c1">-- also log if Enable is TRUE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Usage:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">Log</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Uart Parity Received&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">Log</span><span class="p">(</span><span class="s">&quot;Received UART word&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="setlogenable-enable-disable-logging">
+<h3>SetLogEnable: Enable / Disable Logging<a class="headerlink" href="#setlogenable-enable-disable-logging" title="Permalink to this headline">¶</a></h3>
+<p>Excepting ALWAYS, log enables are disabled by default. SetLogEnable
+allows alert levels to be individually enabled. When used without
+AlertLogID, SetLogEnable sets a value for all AlertLogIDs.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetLogEnable</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">SetLogEnable</span><span class="p">(</span><span class="n">PASSED</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When an AlertLogID is used, SetLogEnable sets a value for that
+AlertLogID, and if Hierarchy is true, the AlertLogIDs of its children.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetLogEnable</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">DescendHierarchy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TRUE</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="c1">-- AlertLogID, Level, Enable, DescendHierarchy</span><span class="w"></span>
+<span class="n">SetLogEnable</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="n">INFO</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="reading-log-enables-from-a-file">
+<h3>Reading Log Enables from a FILE<a class="headerlink" href="#reading-log-enables-from-a-file" title="Permalink to this headline">¶</a></h3>
+<p>ReadLogEnables read enables from a file.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">ReadLogEnables</span><span class="w"> </span><span class="p">(</span><span class="n">FileName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">ReadLogEnables</span><span class="w"> </span><span class="p">(</span><span class="k">file</span><span class="w"> </span><span class="n">AlertLogInitFile</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The preferred file format is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>U_CpuModel DEBUG
+U_UART_TX DEBUG INFO
+U_UART_RX PASSED INFO DEBUG
+</pre></div>
+</div>
+<p>ReadLogEnables will also read a file of the format:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>U_CpuModel
+DEBUG
+U_UART_TX
+DEBUG
+U_UART_TX
+INFO
+</pre></div>
+</div>
+</section>
+<section id="islogenabled-getlogenable">
+<h3>IsLogEnabled /GetLogEnable<a class="headerlink" href="#islogenabled-getlogenable" title="Permalink to this headline">¶</a></h3>
+<p>IsLoggingEnabled returns true when logging is enabled for a particular
+AlertLogID.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">IsLogEnabled</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">IsLogEnabled</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="k">If</span><span class="w"> </span><span class="n">IsLogEnabled</span><span class="p">(</span><span class="n">UartID</span><span class="p">,</span><span class="w"> </span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+</pre></div>
+</div>
+<p>GetLogEnable is a synonym for IsLogEnabled.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetLogEnable</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetLogEnable</span><span class="p">(</span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LogType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="alert-and-log-prefix-and-suffix-to-message">
+<h2>Alert and Log Prefix and Suffix to Message<a class="headerlink" href="#alert-and-log-prefix-and-suffix-to-message" title="Permalink to this headline">¶</a></h2>
+<p>A prefix and suffix can be added message that is printed with Alert or
+Log. These are set on an AlertLogID basis using the following
+operations.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertLogPrefix</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">;</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">UnSetAlertLogPrefix</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogPrefix</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertLogSuffix</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">;</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">UnSetAlertLogSuffix</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogSuffix</span><span class="p">(</span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="affirmation-reference">
+<h2>Affirmation Reference<a class="headerlink" href="#affirmation-reference" title="Permalink to this headline">¶</a></h2>
+<p>Affirmations are a combination of Alerts and Logs. If the Affirmation is
+true, then a log is generated. If an Affirmation is false, then an alert
+is generated.</p>
+<p>Affirmations are intended to be used for self-checking of a test. Each
+call to AffirmIf is counted and reported during ReportAlerts. This
+provides feedback on the amount of self-checking added by a test and is
+used as a quality metric.</p>
+<section id="affirmif-affirmifnot">
+<h3>AffirmIf / AffirmIfNot<a class="headerlink" href="#affirmif-affirmifnot" title="Permalink to this headline">¶</a></h3>
+<p>AffirmIF has two forms of overloading. The first has a separate
+ReceivedMessage and ExpectedMessage. When the affirmation passes, log is
+called with just the Received Message. When an affirmation fails, alert
+is called with the ExpectedMessage concatenated to the end of the
+ReceivedMessage.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ReceivedMessage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ExpectedMessage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ReceivedMessage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ExpectedMessage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The second overloading of AffirmIF has a single Message parameter.
+Hence, both alert and log print the same message.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">condition</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>There is also an AffirmIfNot for both of the forms above.</p>
+</section>
+<section id="affirmifequal">
+<h3>AffirmIfEqual<a class="headerlink" href="#affirmifequal" title="Permalink to this headline">¶</a></h3>
+<p>Affirmation form AffirmIfEqual checks if two values are equal. It
+greatly simplifies the message printing since it differentiates between
+the Received and Expected values. In the following, AType can be
+std_logic, std_logic_vector, unsigned, signed, integer, real, character,
+string or time.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIfEqual</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Received</span><span class="p">,</span><span class="w"> </span><span class="n">Expected</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIfEqual</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Received</span><span class="p">,</span><span class="w"> </span><span class="n">Expected</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="affirmifdiff">
+<h3>AffirmIfDiff<a class="headerlink" href="#affirmifdiff" title="Permalink to this headline">¶</a></h3>
+<p>Affirmation form AffirmIfDiff is for comparing two files.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-- with an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIfDiff</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Name1</span><span class="p">,</span><span class="w"> </span><span class="n">Name2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIfDiff</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertLogID</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogIDType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">file</span><span class="w"> </span><span class="n">File1</span><span class="p">,</span><span class="w"> </span><span class="n">File2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">-- without an AlertLogID</span><span class="w"></span>
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIfDiff</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Name1</span><span class="p">,</span><span class="w"> </span><span class="n">Name2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="k">procedure</span><span class="w"> </span><span class="n">AffirmIfDiff</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">file</span><span class="w"> </span><span class="n">File1</span><span class="p">,</span><span class="w"> </span><span class="n">File2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Level</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ERROR</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="getaffirmcount">
+<h3>GetAffirmCount<a class="headerlink" href="#getaffirmcount" title="Permalink to this headline">¶</a></h3>
+<p>Returns the current affirmation check count.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">impure</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">GetAffirmCount</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">natural</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="incaffirmcount">
+<h3>IncAffirmCount<a class="headerlink" href="#incaffirmcount" title="Permalink to this headline">¶</a></h3>
+<p>Increments the affirmation check count. Intended to be used only in
+special situations, such as packages that have additional considerations
+when using affirmations.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">IncAffirmCount</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="alert-and-log-output-control-options">
+<h2>Alert and Log Output Control Options<a class="headerlink" href="#alert-and-log-output-control-options" title="Permalink to this headline">¶</a></h2>
+<section id="setalertlogjustify">
+<h3>SetAlertLogJustify<a class="headerlink" href="#setalertlogjustify" title="Permalink to this headline">¶</a></h3>
+<p>SetAlertLogJustify justifies name fields of Alerts and Logs. Call after
+setting up the entire hierarchy if you want Alerts and Logs justified
+(hence optional).</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">SetAlertLogJustify</span><span class="p">(</span><span class="n">Enable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="osvvmoptionstype">
+<h3>OsvvmOptionsType<a class="headerlink" href="#osvvmoptionstype" title="Permalink to this headline">¶</a></h3>
+<p>OsvvmOptionsType defines the values for options. User values are:
+OPT_DEFAULT, DISABLED, FALSE, ENABLED, TRUE. The values DISABLED and
+FALSE are handled the same. The values ENABLED and TRUE are treated the
+same. The value OPT_USE_DEFAULT causes the variable to use its default
+value. OsvvmOptionsType is defined in OsvvmGlobalPkg.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">,</span><span class="w"> </span><span class="n">OPT_USE_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLED</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLED</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="setalertlogoptions-configuring-report-options">
+<h3>SetAlertLogOptions: Configuring Report Options<a class="headerlink" href="#setalertlogoptions-configuring-report-options" title="Permalink to this headline">¶</a></h3>
+<p>The output from Alert, Log, and ReportAlerts is configurable using
+SetAlertLogOptions.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">procedure</span><span class="w"> </span><span class="n">SetAlertLogOptions</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">FailOnWarning</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">FailOnDisabledErrors</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ReportHierarchy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteAlertErrorCount</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- 2020.05</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteAlertLevel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteAlertName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteAlertTime</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteLogErrorCount</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- 2020.05</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteLogLevel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteLogName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">PrintPassed</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- 2020.05</span><span class="w"></span>
+<span class="w">  </span><span class="n">PrintAffirmations</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- 2020.05</span><span class="w"></span>
+<span class="w">  </span><span class="n">PrintDisabledAlerts</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">-- 2020.05</span><span class="w"></span>
+<span class="w">  </span><span class="n">WriteLogTime</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OsvvmOptionsType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OPT_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlertPrefix</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">LogPrefix</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ReportPrefix</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">DoneName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">PassName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">FailName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">OSVVM_STRING_INIT_PARM_DETECT</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The following options are for ReportAlerts.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 45%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>PrintPassed</p></th>
+<th class="head"><p>If PrintPassed is
+enabled, print number of
+passed logs in the report
+summary and for each
+AlertLogID</p></th>
+<th class="head"><p>Enabled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PrintAffirmations</p></td>
+<td><p>If PrintAffirmations is
+enabled, print the number
+of affirmations in the
+report summary and for
+each AlertLogID</p></td>
+<td><p>Disabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>FailOnWarning</p></td>
+<td><p>Count warnings as test
+errors.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>FailOnDisabledErrors</p></td>
+<td><p>If FailOnDisabledErrors
+is enabled and
+DisabledAlerts /= 0:</p>
+<blockquote>
+<div><p>Test Fails</p>
+<p>DisabledAlerts are
+printed in the report
+summary.</p>
+<p>DisabledAlerts print
+for each AlertLogID</p>
+</div></blockquote>
+</td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>PrintDisabledAlerts</p></td>
+<td><p>If PrintDisabledAlerts is
+Enabled, print
+DisabledAlerts in the
+report summary and for
+each AlertLogID</p></td>
+<td><p>Disabled</p></td>
+</tr>
+<tr class="row-even"><td><p>ReportHierarchy</p></td>
+<td><p>When multiple AlertLogIDs
+exist, print an error
+summary for each level.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>ReportPrefix</p></td>
+<td><p>Prefix for each line of
+ReportAlerts.</p></td>
+<td><p>“%% “</p></td>
+</tr>
+<tr class="row-even"><td><p>DoneName</p></td>
+<td><p>Name printed after
+ReportPrefix on first
+line of ReportAlerts.</p></td>
+<td><p>“DONE”</p></td>
+</tr>
+<tr class="row-odd"><td><p>PassName</p></td>
+<td><p>Name printed when a test
+passes.</p></td>
+<td><p>“PASSED”.</p></td>
+</tr>
+<tr class="row-even"><td><p>FailName</p></td>
+<td><p>Name printed when a test
+fails.</p></td>
+<td><p>“FAILED”</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following options are for alert:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 44%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>WriteAlertErrorCount</p></th>
+<th class="head"><p>Print Error Count
+immediately after %%
+Alert</p></th>
+<th class="head"><p>Disabled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WriteAlertLevel</p></td>
+<td><p>Print level.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>WriteAlertName</p></td>
+<td><p>Print AlertLogID name.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>WriteAlertTime</p></td>
+<td><p>Alerts print time.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>AlertPrefix</p></td>
+<td><p>Name printed at beginning
+of alert.</p></td>
+<td><p>“%% Alert”</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following options are for Log:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 62%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>WriteLogErrorCount</p></th>
+<th class="head"><p>Print Error Count immediately after %% Log</p></th>
+<th class="head"><p>Disabled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WriteLogLevel</p></td>
+<td><p>Print level.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>WriteLogName</p></td>
+<td><p>Print AlertLogID name.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>WriteLogTime</p></td>
+<td><p>Logs print time.</p></td>
+<td><p>Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>LogPrefix</p></td>
+<td><p>Name printed at beginning of log.</p></td>
+<td><p>“%% Log”</p></td>
+</tr>
+</tbody>
+</table>
+<p>SetAlertOptions will change as AlertLogPkg evolves. Use of named
+association is required to ensure future compatibility.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="n">SetAlertLogOptions</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">FailOnWarning</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">FailOnDisabledErrors</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">FALSE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>After setting a value, a string value can be reset using
+OSVVM_STRING_USE_DEFAULT and an OsvvmOptionsType value can be reset
+using OPT_USE_DEFAULT.</p>
+</section>
+<section id="reportalertlogoptions-print-report-options">
+<h3>ReportAlertLogOptions: Print Report Options<a class="headerlink" href="#reportalertlogoptions-print-report-options" title="Permalink to this headline">¶</a></h3>
+<p>Prints out AlertLogPkg Report Options.</p>
+</section>
+<section id="getting-alertlog-report-options">
+<h3>Getting AlertLog Report Options<a class="headerlink" href="#getting-alertlog-report-options" title="Permalink to this headline">¶</a></h3>
+<p>Report options can be retrieved with one of the Get functions below.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogFailOnWarning</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogFailOnDisabledErrors</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogReportHierarchy</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogHierarchyInUse</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogWriteAlertLevel</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogWriteAlertName</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogWriteAlertTime</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogWriteLogLevel</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogWriteLogName</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogWriteLogTime</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">AlertLogOptionsType</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogAlertPrefix</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogLogPrefix</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogReportPrefix</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogDoneName</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogPassName</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">GetAlertLogFailName</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deallocating-and-re-initializing-the-data-structure">
+<h2>Deallocating and Re-initializing the Data structure<a class="headerlink" href="#deallocating-and-re-initializing-the-data-structure" title="Permalink to this headline">¶</a></h2>
+<section id="deallocatealertlogstruct">
+<h3>DeallocateAlertLogStruct<a class="headerlink" href="#deallocatealertlogstruct" title="Permalink to this headline">¶</a></h3>
+<p>DeallocateAlertLogStruct deallocates all temporary storage allocated by
+AlertLogPkg. Also see ClearAlerts.</p>
+</section>
+<section id="initializealertlogstruct">
+<h3>InitializeAlertLogStruct<a class="headerlink" href="#initializealertlogstruct" title="Permalink to this headline">¶</a></h3>
+<p>InitializeAlertLogStruct is used after DeallocateAlertLogStruct to
+create and initialize internal storage.</p>
+</section>
+</section>
+<section id="compiling-alertlogpkg-and-friends">
+<h2>Compiling AlertLogPkg and Friends<a class="headerlink" href="#compiling-alertlogpkg-and-friends" title="Permalink to this headline">¶</a></h2>
+<p>See OSVVM_release_notes.pdf for the current compilation directions.</p>
+</section>
+<section id="release-notes-for-2020-05">
+<h2>Release Notes for 2020.05<a class="headerlink" href="#release-notes-for-2020-05" title="Permalink to this headline">¶</a></h2>
+<p>Major update to AlertLogPkg. Output formatting of ReportAlerts has
+changed.</p>
+<p>Added count of Log PASSED for each level. Prints by default. Disable by
+using SetAlertLogOptions (PrintPassed =&gt; DISABLED).</p>
+<p>Added total count of log PASSED for all levels. Prints in “%% DONE” line
+by default. Disable as per each level. However, always prints if passed
+count or affirmation count is &gt; 0.</p>
+<p>Added affirmation counts for each level. Prints by default. Disable by
+using SetAlertLogOptions (PrintAffirmations =&gt; DISABLED).</p>
+<p>Total count of affirmations is disabled using SetAlertLogOptions above.
+However, it always prints if affirmation count &gt; 0.</p>
+<p>Disabled alerts are now tracked with a separate DisabledAlertCount for
+each level. These do not print by default. Enable printing for these by
+using SetAlertLogOptions (PrintDisabledAlerts =&gt; ENABLED).</p>
+<p>A total of the DisabledAlertCounts is tracked. Prints in “%% DONE”
+anytime PrintDisabledAlerts is enabled or FailOnDisabledErrors is
+enabled. FailOnDisabledErrors is enabled by default. Disable with
+SetAlertLogOptions (FailOnDisabledErrors =&gt; DISABLED).</p>
+<p>Internal to the protected type of AlertLogPkg is AffirmCount which
+tracks the total of FAILURE, ERROR, and WARNING and ErrorCount which
+tracks a single integer value for all errors. Many simulators give you
+the ability to trace these in your waveform windows.</p>
+<p>Added printing of current ErrorCount in the alert and log messages. When
+enabled, the number immediately follows the “%% Alert” or “%% Log”.
+Enable using SetAlertLogOptions (WriteAlertErrorCount=&gt; ENABLED) and
+SetAlertLogOptions (WriteLogErrorCount=&gt; ENABLED).</p>
+<p>Added direct access to SetAlertLogJustify(Enable := TRUE) which makes
+all alert and log printing justified.</p>
+<p>Added pragmas “synthesis translate_off” and “synthesis translate_on” in
+a first attempt to make the package ok for synthesis tools. It has not
+been tested, so you will need to try it out and report back.</p>
+<p>Added a prefix and suffix for Alerts and Logs. They support set, unset,
+and get operations using SetAlertLogPrefix(ID, “String”),
+UnSetAlertLogPrefix(ID), GetAlertLogPrefix(ID), SetAlertLogSuffix(ID,
+“String”), UnSetAlertLogSuffix (ID), and GetAlertLogSuffix (ID).</p>
+<p>Added ClearAlertStopCounts and ClearAlertCounts. ClearAlerts clears
+AlertCount, DisabledAlertCount, AffirmCount, PassedCount for each level
+as well as ErrorCount, AlertCount, PassedCount, and AffirmCount for the
+top level. ClearAlertStopCounts resets the stop counts back to their
+default values. ClearAlertCounts calls both ClearAlerts and
+CLearAlertStopCounts.</p>
+</section>
+<section id="about-alertlogpkg">
+<h2>About AlertLogPkg<a class="headerlink" href="#about-alertlogpkg" title="Permalink to this headline">¶</a></h2>
+<p>AlertLogPkg was developed and is maintained by Jim Lewis of SynthWorks
+VHDL Training.</p>
+<p>Please support our effort in supporting AlertLogPkg and OSVVM by
+purchasing your VHDL training from SynthWorks.</p>
+<p>AlertLogPkg is released under the Apache open source license. It is free
+(both to download and use - there are no license fees). You can download
+it from <a class="reference external" href="https://github.com/OSVVM/OSVVM">https://github.com/OSVVM/OSVVM</a>. It will be updated from time to
+time. Currently there are numerous planned revisions.</p>
+<p>If you add features to the package, please donate them back under the
+same license as candidates to be added to the standard version of the
+package. If you need features, be sure to contact us. I blog about the
+packages at <a class="reference external" href="http://www.synthworks.com/blog">http://www.synthworks.com/blog</a>. We also support the OSVVM
+user community and blogs through <a class="reference external" href="http://www.osvvm.org">http://www.osvvm.org</a>.</p>
+<p>Find any innovative usage for the package? Let us know, you can blog
+about it at osvvm.org.</p>
+</section>
+<section id="future-work">
+<h2>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h2>
+<p>AlertLogPkg.vhd is a work in progress and will be updated from time to
+time.</p>
+<p>Caution, undocumented items are experimental and may be removed in a
+future version.</p>
+</section>
+<section id="about-the-author-jim-lewis">
+<h2>About the Author - Jim Lewis<a class="headerlink" href="#about-the-author-jim-lewis" title="Permalink to this headline">¶</a></h2>
+<p>Jim Lewis, the founder of SynthWorks, has thirty plus years of design,
+teaching, and problem solving experience. In addition to working as a
+Principal Trainer for SynthWorks, Mr Lewis has done ASIC and FPGA
+design, custom model development, and consulting.</p>
+<p>Mr. Lewis is chair of the IEEE 1076 VHDL Working Group (VASG) and is the
+primary developer of the Open Source VHDL Verification Methodology
+(OSVVM.org) packages. Neither of these activities generate revenue.
+Please support our volunteer efforts by buying your VHDL training from
+SynthWorks.</p>
+<p>If you find bugs these packages or would like to request enhancements,
+you can reach me at <a class="reference external" href="mailto:jim&#37;&#52;&#48;synthworks&#46;com">jim<span>&#64;</span>synthworks<span>&#46;</span>com</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="OSVVM Utility Library Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="genindex.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Jim Lewis Licensed under CC BY-NC-ND 4.0.</p>
+  </div>Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/buildthedocs/sphinx.theme">theme</a>
+    provided by <a href="https://buildthedocs.github.io">Build the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
