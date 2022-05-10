@@ -64,6 +64,16 @@ Documents related to OSVVM Framework
     * - OSVVM's Stream Model Independent Transactions Users Guide
       - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`_
 
+.. list-table:: 
+    :widths: 40 10  
+    :header-rows: 1
+    
+    * - Publications and Webinars
+      - Link
+    * - OSVVM: Leading Edge Verification for the VHDL Community
+      - `DVClub Europe April 2022 <https://www.youtube.com/watch?v=KVmGDy_PHNI>`_
+
+
 
 OSVVM Script Environment
 =====================================
