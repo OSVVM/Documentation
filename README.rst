@@ -65,14 +65,21 @@ Documents related to OSVVM Framework
       - `Stream_Model_Independent_Transactions_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/Stream_Model_Independent_Transactions_user_guide.pdf>`_
 
 .. list-table:: 
-    :widths: 40 10  
+    :widths: 30 20  
     :header-rows: 1
     
     * - Publications and Webinars
-      - Link
-    * - OSVVM: Leading Edge Verification for the VHDL Community
-      - `DVClub Europe April 2022 <https://www.youtube.com/watch?v=KVmGDy_PHNI>`_
-
+      - Event
+    * - `OSVVM Leading Edge Verification for the VHDL Community <https://www.aldec.com/en/support/resources/multimedia/webinars/2186>`_
+      - Part 1 of Better FPGA Verification with VHDL, With Aldec May 2022 
+    * - `Faster than Lite Verification Component Development with OSVVM <https://www.aldec.com/en/support/resources/multimedia/webinars/2187>`_
+      - Part 2 of Better FPGA Verification with VHDL, With Aldec June 2022 
+    * - `OSVVM's Test Reports and Simulator Independent Scripting <https://www.aldec.com/en/support/resources/multimedia/webinars/2188>`_
+      - Part 3 of Better FPGA Verification with VHDL, With Aldec June 2022 
+    * - `Advances in OSVVM's Verification Data Structures <https://www.aldec.com/en/support/resources/multimedia/webinars/2190>`_
+      - Part 4 of Better FPGA Verification with VHDL, With Aldec June 2022 
+    * - `OSVVM: Leading Edge Verification for the VHDL Community <https://www.youtube.com/watch?v=KVmGDy_PHNI>`_
+      - DVClub Europe April 2022 
 
 
 OSVVM Script Environment
@@ -182,6 +189,23 @@ Documents related to OSVVM Verification Utility Library
     * - TextUtilPkg
       - `TextUtilPkg_user_guide.pdf <https://github.com/OSVVM/Documentation/blob/main/TextUtilPkg_user_guide.pdf>`_
       - None
+
+.. list-table:: 
+    :widths: 30 20  
+    :header-rows: 1
+    
+    * - Publications and Webinars
+      - Event
+    * - `OSVVM Leading Edge Verification for the VHDL Community <https://www.aldec.com/en/support/resources/multimedia/webinars/2186>`_
+      - Part 1 of Better FPGA Verification with VHDL, With Aldec May 2022 
+    * - `Faster than Lite Verification Component Development with OSVVM <https://www.aldec.com/en/support/resources/multimedia/webinars/2187>`_
+      - Part 2 of Better FPGA Verification with VHDL, With Aldec June 2022 
+    * - `OSVVM's Test Reports and Simulator Independent Scripting <https://www.aldec.com/en/support/resources/multimedia/webinars/2188>`_
+      - Part 3 of Better FPGA Verification with VHDL, With Aldec June 2022 
+    * - `Advances in OSVVM's Verification Data Structures <https://www.aldec.com/en/support/resources/multimedia/webinars/2190>`_
+      - Part 4 of Better FPGA Verification with VHDL, With Aldec June 2022 
+    * - `OSVVM: Leading Edge Verification for the VHDL Community <https://www.youtube.com/watch?v=KVmGDy_PHNI>`_
+      - DVClub Europe April 2022 
 
 Model Independent Transactions
 =====================================
