@@ -89,6 +89,7 @@ The goal of OSVVM's scripting is to have
 
 Current supported simulators are
 
+* NVC (Free Open Source simulator),
 * GHDL (Free Open Source simulator),
 * Aldec's Active-HDL and Riviera-PRO, 
 * Siemen's ModelSim and QuestaSim, 
