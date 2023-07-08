@@ -1,27 +1,30 @@
 OSVVM Documentation
 ######################
 
-OSVVM is an advanced verification methodology that
+OSVVM is an advanced verification methodology that 
 defines a VHDL verification framework, verification utility library, 
-verification component library, and a scripting flow
-that simplifies your FPGA or ASIC verification project 
-from start to finish.
-Using these libraries you can create a simple, readable, and 
-powerful testbench that is suitable for either a simple FPGA block
-or a complex ASIC.
+verification component library, scripting API, and co-simulation capability 
+that simplifies your FPGA or ASIC verification project from start to finish. 
+Using these libraries you can create a simple, readable, 
+and powerful testbench that will boost productivity for either 
+low level block tests (unit tests) or complex FPGA and ASIC tests.
 
 OSVVM is developed by the same VHDL experts who
 have helped develop VHDL standards.
 We have used our expert VHDL skills to create
 advanced verification capabilities that:  
 
-- Are simple to use and work like built-in language features.  
-- Maximize reuse and reduce project schedule.  
-- Improve readabilty and reviewability by the whole team including software and system engineers.  
-- Facilitate debug with HTML based test suite and test case reporting.  
-- Support continuous integration (CI/CD) with JUnit XML test suite reporting.  
-- Provide buzz word features including Constrained Random, Functional Coverage, Scoreboards, FIFOs, Memory Models, error logging and reporting, and message filtering.  
-- Rival the verification capabilities of SystemVerilog + UVM.  
+- A structured transaction-based framework using verification components that is suitable for all verification tasks - from Unit/RTL to full chip/system level testing.
+- Test cases and verification components that can be written any VHDL Engineer.
+- Test cases that are readable and reviewable by the whole team including software and system engineers.   
+- Unmatched reuse through the entire verification process.    
+- Unmatched test reporting with HTML based test suite reports, test case reports, and logs that facilitate debug and test artifact collection.   
+- Support for continuous integration (CI/CD) with JUnit XML test suite reporting.  
+- Powerful and concise verification capabilities including Constrained Random, Functional Coverage, Scoreboards, FIFOs, Memory Models, error logging and reporting, and message filtering that are simple to use and work like built-in language features.
+- A common scripting API to run all simulators - including GHDL, NVC, Aldec Riviera-PRO and ActiveHDL, Siemens Questa and ModelSim, Synopsys VCS, and Cadence Xcelium.  
+- A Co-simulation capability that supports running software (C++) in a hardware simulation environment.
+- A Model Independent Transaction (MIT) library that defines a transaction API (procedures such as read, write, send, get, …)  and transaction interface (a record) that simplifies writing verification components and test cases.
+- A rival to the verification capabilities of SystemVerilog + UVM.  
 
 
 Run The Demos
